@@ -4,6 +4,14 @@ StockSynth is a tool that utilizes stock market data to adjust parameters for di
 
 ---
 
+## Features:
+ - Easy to use intuitive UI
+ - Volume control
+ - Stock history control
+ - Track any valid stock!
+
+---
+
 ## How it works:
  - 1: **Cache Check:** The program checks the local memory to see if the stock has been saved in memory from a previous search. If it has, then it will load from cache, saving API credit usage.
  - 2: **API/Error Handling:** If the stock isn't present in the cache, it calls TwelveData's API and handles or prints any errors.
@@ -24,4 +32,6 @@ I polished a lot so far! I custom made a synth in FL Studio using 3x Osc. This s
 
 The actual system is pretty simple! It checks if the stock ticker is valid. If it is valid, it checks the cache to see if the same ticker is stored in there. This saves on API credit usage, as if you're rapidly calling the same ticker you won't use up a bunch of credits. If it isn't cached, it calls the API. There is an error logging system that prints any errors in Godot's output, and obviously the cache system which will save stocks that you call. Then, it will calculate the min/max stock price so that the graph scales correctly, and maps each data point to a point on the graph. The scan line is then set to visible, and moves along the graph. The pitch is updated every 0.03 seconds and the synth audio starts. It's also smoothed out to avoid harsh sounds. The scanline will loop indefinitely, until you select a new ticker, as will the audio.
 - #### Afternoon:
-I implemented a timescale system! You can now select from several options, ranging from 1 day history to 1 year history. It automatically calculates the resolution within the limits of the API, so it will have less data points for a 3 day history than it would for a 6 month history. 
+U1: I implemented a timescale system! You can now select from several options, ranging from 1 day history to 1 year history. It automatically calculates the resolution within the limits of the API, so it will have less data points for a 3 day history than it would for a 6 month history. 
+U2: I also implemented two synth windows in the main scene! For now they are both set to the default synth, but I'll add a dropdown menu soon so you can select a wide variety of sounds, including drums, bass, etc.
+I also updated the synth sound to be a few seconds long instead of a few minutes long. This drastically improves both performance and loading times, now taking a few hundred milliseconds vs. a few seconds, meaning it loads over 10x faster!

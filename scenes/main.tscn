@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://ci8i0wd300xu8"]
+[gd_scene load_steps=4 format=3 uid="uid://ci8i0wd300xu8"]
 
-[ext_resource type="PackedScene" uid="uid://qsc3s4tokwgq" path="res://synth.tscn" id="1_lhhlj"]
+[ext_resource type="PackedScene" uid="uid://qsc3s4tokwgq" path="res://scenes/synth.tscn" id="1_lhhlj"]
+
+[sub_resource type="Gradient" id="Gradient_vdcla"]
+offsets = PackedFloat32Array(0.0060241, 1)
+colors = PackedColorArray(0.849866, 0.381288, 0.259869, 1, 0.109804, 0.772549, 0.247059, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4hl0f"]
+gradient = SubResource("Gradient_vdcla")
+width = 512
+height = 512
+fill_to = Vector2(0.652174, 1)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -10,4 +20,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="backRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_4hl0f")
+
 [node name="synth" parent="." instance=ExtResource("1_lhhlj")]
+
+[node name="synth2" parent="." instance=ExtResource("1_lhhlj")]
+position = Vector2(2, 494)

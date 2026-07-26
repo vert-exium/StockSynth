@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://blr0c8nkprrbp"]
+
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_xex6u"]
+[ext_resource type="Texture2D" uid="uid://dtogsvvlh8q4p" path="res://assets/uparrow.png" id="2_yj0kh"]
+[ext_resource type="Texture2D" uid="uid://bana1yg1apayc" path="res://assets/downarrow.png" id="3_ynfwh"]
+[ext_resource type="FontFile" uid="uid://yjevlpg7tuu5" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="4_ldpub"]
+[ext_resource type="FontFile" uid="uid://c6huylfvo1mqw" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="5_ejtio"]
+[ext_resource type="FontFile" uid="uid://bmgweqsxi67y3" path="res://fonts/chunk-master/ChunkFive-Regular.otf" id="6_yss5f"]
+
+[sub_resource type="Gradient" id="Gradient_e8iap"]
+colors = PackedColorArray(0.185242, 0.516339, 1, 1, 0.553745, 0.00306901, 0.865632, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8m8wb"]
+gradient = SubResource("Gradient_e8iap")
+width = 512
+height = 512
+fill_to = Vector2(0.688073, 0.683486)
+
+[node name="mainmenu" type="Node2D"]
+script = ExtResource("1_xex6u")
+
+[node name="backTexture" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_8m8wb")
+
+[node name="upArrow" type="TextureRect" parent="."]
+offset_left = -59.0
+offset_top = -225.0
+offset_right = 933.0
+offset_bottom = 822.0
+texture = ExtResource("2_yj0kh")
+
+[node name="downArrow" type="TextureRect" parent="."]
+offset_left = 1207.0
+offset_top = 195.0
+offset_right = 2107.0
+offset_bottom = 1095.0
+rotation = 0.166806
+texture = ExtResource("3_ynfwh")
+flip_h = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 746.0
+offset_top = 474.0
+offset_right = 1184.0
+offset_bottom = 646.0
+theme_override_fonts/font = ExtResource("4_ldpub")
+theme_override_font_sizes/font_size = 126
+disabled = true
+text = "ENTER"
+
+[node name="apiEnter" type="TextEdit" parent="."]
+offset_left = 749.0
+offset_top = 692.0
+offset_right = 1183.0
+offset_bottom = 856.0
+theme_override_fonts/font = ExtResource("5_ejtio")
+theme_override_font_sizes/font_size = 20
+placeholder_text = "Please input your free API key from https://twelvedata.com without any spaces before or after. Sorry! This is required to prevent API limiting."
+wrap_mode = 1
+
+[node name="titleLabel" type="Label" parent="."]
+offset_left = 239.0
+offset_top = 62.0
+offset_right = 1756.0
+offset_bottom = 364.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.32549)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 10
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 25
+theme_override_fonts/font = ExtResource("6_yss5f")
+theme_override_font_sizes/font_size = 251
+text = "StockSynth"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
