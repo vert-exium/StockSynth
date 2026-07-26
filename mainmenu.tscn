@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://blr0c8nkprrbp"]
+
+[ext_resource type="Script" path="res://mainmenu.gd" id="1_uqaon"]
+
+[node name="mainmenu" type="Node2D"]
+script = ExtResource("1_uqaon")
+
+[node name="bgrect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.313967, 0.362275, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 592.0
+offset_top = 151.0
+offset_right = 1482.0
+offset_bottom = 372.0
+theme_override_font_sizes/font_size = 161
+text = "LIVE SYNTH
+"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 838.0
+offset_top = 586.0
+offset_right = 1168.0
+offset_bottom = 688.0
+theme_override_font_sizes/font_size = 51
+disabled = true
+text = "ENTER"
+
+[node name="apiEnter" type="TextEdit" parent="."]
+offset_left = 838.0
+offset_top = 748.0
+offset_right = 1197.0
+offset_bottom = 872.0
+placeholder_text = "Please input your free API key from https://finnhub.io without any spaces before or after. Sorry! This is required to prevent API limiting."
+wrap_mode = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
