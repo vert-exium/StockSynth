@@ -4,6 +4,7 @@ extends Node2D
 @onready var http_request: HTTPRequest = $HTTPRequest
 @onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var beat_timer: Timer = $Timer
+@onready var time_label_start: Label = $ChartUI/GraphRect/TimeLabelStart
 
 @onready var ticker_input: LineEdit = $ChartUI/TickerInput
 @onready var fetch_button: Button = $ChartUI/FetchButton
@@ -16,7 +17,7 @@ extends Node2D
 @onready var scanline: Line2D = $ChartUI/GraphRect/Scanline
 @onready var status_label: Label = $ChartUI/GraphRect/StatusLabel
 
-# Local Cache (Stores: {"AAPL_0": [150.2, 150.8, ...]})
+# Local Cache (Format: {"AAPL_0": [150.2, 150.8, ...]})
 var stock_cache: Dictionary = {}
 
 var stock_pitches: Array[float] = []
@@ -203,7 +204,7 @@ func _on_timer_timeout() -> void:
 	# Dynamic Pitch Compensation offset (+2.0 dB to -6.0 dB)
 	var pitch_comp_db = remap(current_pitch, 0.5, 2.0, 2.0, -6.0)
 	
-	# Combine Pitch Compensation with the [-5dB to +5dB] slider offset
+	# Combine Pitch Compensation with the [-5dB to +5dB] slider offset via $VolSlider
 	var final_target_db = pitch_comp_db + user_db_offset
 	audio_player.volume_db = lerp(audio_player.volume_db, final_target_db, 0.25)
 	
