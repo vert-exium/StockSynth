@@ -2,7 +2,7 @@ extends Node2D
 
 # Node References
 @onready var http_request: HTTPRequest = $HTTPRequest
-@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer2D
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var beat_timer: Timer = $Timer
 
 @onready var ticker_input: LineEdit = $ChartUI/TickerInput
@@ -17,13 +17,16 @@ extends Node2D
 # Twelve Data Configuration for 1 Month (~1600 points of 5min bars)
 const INTERVAL = "5min"
 const OUTPUTSIZE = 1600
-# test edit
+
 # Local Cache to save API credits (Stores: {"AAPL": [150.2, 150.8, ...]})
 var stock_cache: Dictionary = {}
 
 var stock_pitches: Array[float] = []
 var raw_prices: Array[float] = []
 var current_note_index: int = 0
+
+# Track active pitch for smooth gliding
+var current_pitch: float = 1.0
 
 func _ready() -> void:
 	# Connect UI Signals
@@ -56,7 +59,7 @@ func fetch_stock_month(symbol: String) -> void:
 		return
 
 	# 2. If not cached, check key and make API call
-	var api_key = Global.apiKey.strip_edges()
+	var api_key = Global.api_key.strip_edges()
 	if api_key.is_empty():
 		status_label.text = "Error: No API Key found in Global script!"
 		return
@@ -141,9 +144,7 @@ func convert_prices_to_pitches(prices: Array[float]) -> void:
 	for price in prices:
 		var norm = remap(price, min_price, max_price, 0.0, 1.0)
 		
-		# Continuous pitch mapping: maps price range to pitch_scale ratios (0.5 to 2.0)
-		# Low stock price = half pitch (1 octave down)
-		# High stock price = double pitch (1 octave up)
+		# Pitch range mapping: 0.5 (1 octave down) to 2.0 (1 octave up)
 		var smooth_pitch = remap(norm, 0.0, 1.0, 0.5, 2.0)
 		stock_pitches.append(smooth_pitch)
 
@@ -157,23 +158,39 @@ func start_music_sequencer() -> void:
 	scanline.add_point(Vector2(0, rect_size.y))
 	
 	current_note_index = 0
+	if not stock_pitches.is_empty():
+		current_pitch = stock_pitches[0]
+		audio_player.pitch_scale = current_pitch
+		
 	_update_scanline_position()
 	
-	# Start audio player ONCE (letting it loop without re-triggering)
+	# Start audio player ONCE
 	if not audio_player.playing:
 		audio_player.play()
 	
-	# Update position/pitch every 0.03 seconds for a smooth 48-second scan across the month
+	# Timer interval set to 0.03 seconds for a smooth scan
 	beat_timer.wait_time = 0.03
 	beat_timer.start()
 
 func _on_timer_timeout() -> void:
 	if stock_pitches.is_empty(): return
 		
-	# Smoothly adjust pitch_scale on the currently playing loop (No play() call!)
-	audio_player.pitch_scale = stock_pitches[current_note_index]
+	# Fallback restart if audio player stops at the end of a clip
+	if not audio_player.playing:
+		audio_player.play()
+
+	var target_pitch = stock_pitches[current_note_index]
 	
-	# Move scanline right and wrap back to start at the end of the graph
+	# 1. Interpolate pitch for smooth glides without audio ticks
+	current_pitch = lerp(current_pitch, target_pitch, 0.25)
+	audio_player.pitch_scale = current_pitch
+	
+	# 2. Dynamic Volume Compensation (Uniform Loudness)
+	# High pitches drop volume (-6.0 dB) / Low pitches gain volume (+2.0 dB)
+	var target_db = remap(current_pitch, 0.5, 2.0, 2.0, -6.0)
+	audio_player.volume_db = lerp(audio_player.volume_db, target_db, 0.25)
+	
+	# Move scanline right and wrap back to start at the end of the chart
 	current_note_index = (current_note_index + 1) % stock_pitches.size()
 	_update_scanline_position()
 

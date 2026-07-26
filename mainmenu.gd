@@ -12,6 +12,6 @@ func _process(delta: float):
 		$Button.disabled = false
 
 func _on_button_pressed() -> void:
-	Global.apiKey = $apiEnter.text
-	print("DEBUG: API key is " + str(Global.apiKey))
+	Global.api_key = $apiEnter.text
+	print("DEBUG: API key is " + str(Global.api_key))
 	get_tree().change_scene_to_file("res://synth.tscn")
