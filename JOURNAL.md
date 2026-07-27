@@ -47,6 +47,7 @@ Here you can see the two windows I added! These would soon be updated to have mu
 
 ![Two windows!](documentation/pic6.png)
 
+
 ---
 
 - #### Update 3:
@@ -62,6 +63,10 @@ Here you can see some of the comments I improved in my script.
 Here you can see there are now 4 windows, update rate slider, pitch offset, and a list of instruments I made in FL Studio!
 
 ![More windows](documentation/pic8.png)
+
+Sneakpeek behind making the sounds in FL Studio!
+
+![FL Studio][documentation/pic13.png]
 
 ---
 
@@ -86,5 +91,9 @@ Here's a preview of the API key tutorial and the main tutorial. It's pretty simp
 This is the main screen. You can see a lot here. There's a stop button, revamped fonts, particles toggle, and a changing background. You can also see the scrolling list of popular stocks on the very right.
 
 ![Main Screen](documentation/pic12.png)
+
+Some of the code behind the hover system. It gets your position, translates it into the corresponding data point, and displays the info as text!
+
+![Hover system code!](documentation/pic14.png)
 
 ---
