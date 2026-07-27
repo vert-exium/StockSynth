@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://qsc3s4tokwgq"]
+[gd_scene load_steps=11 format=3 uid="uid://qsc3s4tokwgq"]
 
 [ext_resource type="Script" path="res://scripts/synth.gd" id="1_5w4fs"]
 [ext_resource type="AudioStream" uid="uid://8xcoxvwci4ly" path="res://audio/c4retropluck.wav" id="2_d8ysl"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://bipm5mel2bqkc" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="3_1yt24"]
 [ext_resource type="FontFile" uid="uid://p3aq77yu12fw" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="3_rnska"]
 [ext_resource type="FontFile" uid="uid://c6huylfvo1mqw" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="5_hmmff"]
+[ext_resource type="Texture2D" uid="uid://6m2l02sn6n83" path="res://assets/noteTexture.png" id="6_1b2n2"]
 [ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="6_1j1fq"]
 [ext_resource type="FontFile" uid="uid://okj3ogrjimt3" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="7_yj60m"]
 
@@ -21,16 +22,8 @@ initial_velocity_max = 25.0
 angular_velocity_min = -100.0
 angular_velocity_max = 100.0
 gravity = Vector3(0, 0, 0)
-
-[sub_resource type="Gradient" id="Gradient_cqol3"]
-offsets = PackedFloat32Array(0, 0.974026)
-colors = PackedColorArray(0, 0, 0, 1, 0.180946, 0.192715, 0.202686, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_bh4yo"]
-gradient = SubResource("Gradient_cqol3")
-width = 3
-height = 3
-fill_to = Vector2(0, 1)
+scale_min = 0.15
+scale_max = 0.25
 
 [node name="synth" type="Node2D"]
 script = ExtResource("1_5w4fs")
@@ -138,13 +131,12 @@ light_mask = 3
 visibility_layer = 3
 z_index = 1
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="ChartUI/GraphRect/Scanline"]
+[node name="LineGPUParticles" type="GPUParticles2D" parent="ChartUI/GraphRect/Scanline"]
 z_index = -1
 position = Vector2(0, 217.5)
-amount = 100
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_53mag")
-texture = SubResource("GradientTexture2D_bh4yo")
-lifetime = 1.5
+texture = ExtResource("6_1b2n2")
 randomness = 0.8
 visibility_rect = Rect2(-100, -100, 200, 1000)
 
@@ -343,6 +335,17 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("7_yj60m")
 text = "- 60%"
 
+[node name="particleToggleBar" type="CheckButton" parent="ChartUI"]
+offset_left = 656.25
+offset_top = 123.75
+offset_right = 894.25
+offset_bottom = 154.75
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("6_1j1fq")
+theme_override_font_sizes/font_size = 15
+button_pressed = true
+text = "Scanline Particles Toggle"
+
 [node name="trackerLine" type="Line2D" parent="."]
 position = Vector2(0, 126)
 points = PackedVector2Array(0, 0, 0, 351.8)
@@ -351,3 +354,4 @@ default_color = Color(1, 1, 1, 0.596078)
 
 [connection signal="pressed" from="ChartUI/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="value_changed" from="ChartUI/GraphRect/VolSlider" to="." method="_on_vol_slider_value_changed"]
+[connection signal="toggled" from="ChartUI/particleToggleBar" to="." method="_on_particle_toggle_bar_toggled"]

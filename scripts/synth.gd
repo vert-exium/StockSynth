@@ -31,7 +31,7 @@ var sound_library: Array[AudioStream] = [
 	preload("res://audio/c4squaresynth.wav")
 ]
 
-# Local Cache (format: {"AAPL_0": [150.2, 150.8, ...]})
+# Local cache for stocks (format: {"AAPL_0": [150.2, 150.8, ...]})
 var stock_cache: Dictionary = {}
 
 var stock_pitches: Array[float] = []
@@ -376,6 +376,8 @@ func _on_graph_rect_gui_input(event: InputEvent) -> void:
 		
 		# displays that value as text
 		status_label.text = "Point #%d | Price: $%.2f | Pitch Multiplier: %.2fx" % [hover_index, hovered_price, hovered_pitch]
+		
+		# sets the x position of the small tracker line to the mouse's local position constantly
 		$trackerLine.position.x = get_local_mouse_position().x
 		$trackerLine.visible = true
 
@@ -385,3 +387,11 @@ func _on_graph_rect_mouse_exited() -> void:
 	if not raw_prices.is_empty():
 		$trackerLine.visible = false
 		status_label.text = "Hover over chart to inspect points."
+
+
+# translates state of the toggle bar to turn particle emitter on/off
+func _on_particle_toggle_bar_toggled(toggled_on: bool) -> void:
+	if toggled_on == true:
+		$ChartUI/GraphRect/Scanline/LineGPUParticles.emitting = true
+	elif toggled_on == false:
+		$ChartUI/GraphRect/Scanline/LineGPUParticles.emitting = false

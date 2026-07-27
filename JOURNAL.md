@@ -4,6 +4,7 @@
 
 ### 7/25/2026 - The start
 I started with a basic idea of drawing a stock graph and adjusting the pitch according to how well the stock did. I made a basic main menu screen and I searched for an API. I landed on twelvedata, as it allows 8 API credits per minute and up to 800 per day, for free. It's not the absolute best solution as you need to register for an account, but it allows as many users as needed to use the program at the same time, as there isn't one API key being used. I laid out a basic prototype, it simply drew stock data from Tesla from the past 30 minutes and played a synth constantly that pitched up and down. It drew a graph using a Line2D node and had a scanline that followed the graph. It was hard to research how to do this, but I eventually got a working prototype out!
+![First working prototype!](documentation/pic1.png)
 
 ### 7/26/2026
 
