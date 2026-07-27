@@ -1,18 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://qsc3s4tokwgq"]
+[gd_scene load_steps=9 format=3 uid="uid://qsc3s4tokwgq"]
 
 [ext_resource type="Script" path="res://scripts/synth.gd" id="1_5w4fs"]
 [ext_resource type="AudioStream" uid="uid://8xcoxvwci4ly" path="res://audio/c4retropluck.wav" id="2_d8ysl"]
 [ext_resource type="FontFile" uid="uid://yjevlpg7tuu5" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="2_styni"]
-
-[sub_resource type="Gradient" id="Gradient_2yc3q"]
-colors = PackedColorArray(0.103744, 0.103744, 0.103744, 1, 0.299547, 0.299547, 0.299547, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jojdb"]
-gradient = SubResource("Gradient_2yc3q")
-width = 256
-height = 256
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0, 0)
+[ext_resource type="FontFile" uid="uid://bipm5mel2bqkc" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="3_1yt24"]
+[ext_resource type="FontFile" uid="uid://p3aq77yu12fw" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="3_rnska"]
+[ext_resource type="FontFile" uid="uid://c6huylfvo1mqw" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="5_hmmff"]
+[ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="6_1j1fq"]
+[ext_resource type="FontFile" uid="uid://okj3ogrjimt3" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="7_yj60m"]
 
 [node name="synth" type="Node2D"]
 script = ExtResource("1_5w4fs")
@@ -28,8 +23,9 @@ volume_db = 6.0
 [node name="ChartUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = -3.0
 offset_right = 1920.0
-offset_bottom = 1080.0
+offset_bottom = 1077.0
 scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 
@@ -50,14 +46,18 @@ offset_left = -2.5
 offset_top = 16.25
 offset_right = 37.5
 offset_bottom = 39.25
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hmmff")
 text = "30 ms"
 
 [node name="1920msLabel" type="Label" parent="ChartUI/RythymSlider"]
 layout_mode = 0
-offset_left = 243.75
+offset_left = 245.0
 offset_top = 16.25
-offset_right = 307.75
+offset_right = 309.0
 offset_bottom = 39.25
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hmmff")
 text = "1920 ms"
 
 [node name="TickerInput" type="LineEdit" parent="ChartUI"]
@@ -66,28 +66,39 @@ offset_left = 99.0
 offset_top = 108.0
 offset_right = 353.0
 offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("3_1yt24")
 placeholder_text = "Enter Ticker Here"
 
 [node name="FetchButton" type="Button" parent="ChartUI"]
 layout_mode = 0
 offset_left = 99.0
 offset_top = 43.0
-offset_right = 231.0
+offset_right = 219.0
 offset_bottom = 103.0
-text = "Load Song
+theme_override_fonts/font = ExtResource("3_rnska")
+text = "Load Graph
 "
+
+[node name="StopButton" type="Button" parent="ChartUI"]
+layout_mode = 0
+offset_left = 232.75
+offset_top = 43.0
+offset_right = 352.75
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("5_hmmff")
+text = "Stop Song"
 
 [node name="CooldownTimer" type="Timer" parent="ChartUI"]
 wait_time = 8.0
 one_shot = true
 
-[node name="GraphRect" type="TextureRect" parent="ChartUI"]
+[node name="GraphRect" type="ColorRect" parent="ChartUI"]
 layout_mode = 0
 offset_left = 99.0
 offset_top = 161.0
 offset_right = 1009.0
 offset_bottom = 601.0
-texture = SubResource("GradientTexture2D_jojdb")
+color = Color(0, 0, 0, 0.0705882)
 
 [node name="GraphLine" type="Line2D" parent="ChartUI/GraphRect"]
 points = PackedVector2Array(1268, -64)
@@ -98,24 +109,34 @@ default_color = Color(0.255585, 0.927708, 5.0056e-06, 1)
 
 [node name="StatusLabel" type="Label" parent="ChartUI/GraphRect"]
 layout_mode = 0
-offset_right = 175.0
-offset_bottom = 87.0
-theme_override_font_sizes/font_size = 16
+offset_left = 12.0
+offset_top = 13.0
+offset_right = 890.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("3_rnska")
+theme_override_font_sizes/font_size = 25
+text = "Status here!"
 
 [node name="TimeLabelStart" type="Label" parent="ChartUI/GraphRect"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 455.0
-offset_right = 107.0
-offset_bottom = 478.0
+offset_left = 0.999999
+offset_top = 460.25
+offset_right = 161.0
+offset_bottom = 493.25
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_yj60m")
+theme_override_font_sizes/font_size = 25
 text = "1 month ago"
 
 [node name="TimeLabelEnd" type="Label" parent="ChartUI/GraphRect"]
 layout_mode = 0
-offset_left = 859.0
-offset_top = 454.0
-offset_right = 899.0
-offset_bottom = 477.0
+offset_left = 854.75
+offset_top = 450.25
+offset_right = 909.75
+offset_bottom = 483.25
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("7_yj60m")
+theme_override_font_sizes/font_size = 25
 text = "Now"
 
 [node name="VolSlider" type="VSlider" parent="ChartUI/GraphRect"]
@@ -134,22 +155,28 @@ offset_left = 913.5
 offset_top = -4.75
 offset_right = 984.5
 offset_bottom = 23.25
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hmmff")
 text = "Volume Offset"
 
 [node name="MaxVolLabel" type="Label" parent="ChartUI/GraphRect"]
 layout_mode = 0
-offset_left = 934.75
-offset_top = 15.25
-offset_right = 976.75
-offset_bottom = 38.25
+offset_left = 933.5
+offset_top = 16.5
+offset_right = 975.5
+offset_bottom = 39.5
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("6_1j1fq")
 text = "+5db"
 
 [node name="MinVolLabel" type="Label" parent="ChartUI/GraphRect"]
 layout_mode = 0
-offset_left = 938.5
-offset_top = 132.75
-offset_right = 978.5
-offset_bottom = 155.75
+offset_left = 933.5
+offset_top = 134.0
+offset_right = 975.5
+offset_bottom = 157.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_yj60m")
 text = "-5db"
 
 [node name="PitchSlider" type="VSlider" parent="ChartUI/GraphRect"]
@@ -170,6 +197,7 @@ offset_left = 368.75
 offset_top = 123.75
 offset_right = 473.75
 offset_bottom = 154.75
+theme_override_fonts/font = ExtResource("5_hmmff")
 selected = 0
 item_count = 8
 popup/item_0/text = "1 Day"
@@ -226,6 +254,8 @@ offset_left = 437.5
 offset_top = 637.5
 offset_right = 533.5
 offset_bottom = 660.5
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hmmff")
 text = "Update Rate"
 
 [node name="instrumentLabel" type="Label" parent="ChartUI"]
@@ -234,6 +264,7 @@ offset_left = 495.0
 offset_top = 100.0
 offset_right = 616.0
 offset_bottom = 123.0
+theme_override_fonts/font = ExtResource("2_styni")
 text = "Instrument:"
 
 [node name="pitchOffsetLabel" type="Label" parent="ChartUI"]
@@ -242,22 +273,29 @@ offset_left = 1017.5
 offset_top = 380.0
 offset_right = 1119.5
 offset_bottom = 403.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hmmff")
 text = "Pitch Offset"
 
 [node name="plusLabel" type="Label" parent="ChartUI/pitchOffsetLabel"]
 layout_mode = 0
-offset_left = 16.25
-offset_top = 22.5
-offset_right = 62.25
-offset_bottom = 45.5
+offset_left = 21.25
+offset_top = 20.0
+offset_right = 71.25
+offset_bottom = 43.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_yj60m")
 text = "+ 60%"
 
 [node name="minusLabel" type="Label" parent="ChartUI/pitchOffsetLabel"]
 layout_mode = 0
-offset_left = 12.5
-offset_top = 190.0
-offset_right = 58.5
-offset_bottom = 213.0
+offset_left = 21.25
+offset_top = 192.5
+offset_right = 70.25
+offset_bottom = 215.5
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_yj60m")
 text = "- 60%"
 
+[connection signal="pressed" from="ChartUI/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="value_changed" from="ChartUI/GraphRect/VolSlider" to="." method="_on_vol_slider_value_changed"]

@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://m8ss78oh54nt"]
+
+[ext_resource type="Script" path="res://scripts/tutorial_landing_page.gd" id="1_hdewq"]
+[ext_resource type="FontFile" uid="uid://okj3ogrjimt3" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="1_xry3s"]
+[ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="2_bhvu3"]
+
+[sub_resource type="Gradient" id="Gradient_onqp4"]
+offsets = PackedFloat32Array(0, 0.993506)
+colors = PackedColorArray(1, 0.378613, 0.171168, 1, 0.578143, 0.464939, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fafjc"]
+gradient = SubResource("Gradient_onqp4")
+width = 256
+height = 256
+fill_to = Vector2(0.123853, 1)
+
+[node name="tutorialLandingPg" type="Node2D"]
+script = ExtResource("1_hdewq")
+
+[node name="backRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_fafjc")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 625.0
+offset_top = 142.0
+offset_right = 1290.0
+offset_bottom = 304.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("1_xry3s")
+theme_override_font_sizes/font_size = 40
+text = "Welcome to the tutorial menu! This will walk you through all of the steps to get started!"
+autowrap_mode = 3
+
+[node name="APItutButton" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 413.0
+offset_right = 872.0
+offset_bottom = 1013.0
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_bhvu3")
+theme_override_font_sizes/font_size = 60
+text = "Tutorial 1: how to
+get an API key"
+
+[node name="APItutButton2" type="Button" parent="."]
+offset_left = 1044.0
+offset_top = 413.0
+offset_right = 1844.0
+offset_bottom = 1013.0
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_bhvu3")
+theme_override_font_sizes/font_size = 60
+text = "Tutorial 2: How to
+use StockSynth"
+
+[node name="returnButton" type="Button" parent="."]
+offset_left = 72.0
+offset_top = 313.0
+offset_right = 384.0
+offset_bottom = 385.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_bhvu3")
+theme_override_font_sizes/font_size = 25
+text = "Return to Main Menu"
+
+[connection signal="pressed" from="APItutButton" to="." method="_on_ap_itut_button_pressed"]
+[connection signal="pressed" from="APItutButton2" to="." method="_on_ap_itut_button_2_pressed"]
+[connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]

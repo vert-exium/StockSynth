@@ -7,7 +7,7 @@ extends Node2D
 @onready var ticker_input: LineEdit = $ChartUI/TickerInput
 @onready var fetch_button: Button = $ChartUI/FetchButton
 @onready var cooldown_timer: Timer = $ChartUI/CooldownTimer
-@onready var graph_rect: TextureRect = $ChartUI/GraphRect
+@onready var graph_rect: ColorRect = $ChartUI/GraphRect
 @onready var graph_line: Line2D = $ChartUI/GraphRect/GraphLine
 @onready var scanline: Line2D = $ChartUI/GraphRect/Scanline
 @onready var status_label: Label = $ChartUI/GraphRect/StatusLabel
@@ -73,7 +73,7 @@ func _ready() -> void:
 	
 	# hides the scanline and sets status label text
 	scanline.visible = false
-	status_label.text = "Type a ticker symbol (e.g. AAPL, TSLA, BTC/USD) and click Load!"
+	status_label.text = "Type a ticker symbol and click Load Graph!"
 
 # adds all options to the sound selector dropdown menu
 func _setup_sound_dropdown() -> void:
@@ -189,7 +189,7 @@ func fetch_stock_data(symbol: String) -> void:
 	fetch_button.disabled = true
 	cooldown_timer.start(5.0)
 
-	status_label.text = "Fetching data for " + symbol + "..."
+	status_label.text = "Fetching stock data for " + symbol + "..."
 	
 	var url = "https://api.twelvedata.com/time_series?symbol=%s&interval=%s&outputsize=%d&apikey=%s" % [
 		symbol, config.interval, config.outputsize, api_key
@@ -343,3 +343,9 @@ func _update_scanline_position() -> void:
 # enables button after cooldown is over
 func _on_cooldown_finished() -> void:
 	fetch_button.disabled = false
+
+
+func _on_stop_button_pressed() -> void:
+	beat_timer.stop()
+	audio_player.stop()
+	scanline.visible = false

@@ -1,0 +1,146 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwkvora02nvy2"]
+
+[ext_resource type="PackedScene" uid="uid://qsc3s4tokwgq" path="res://scenes/synth.tscn" id="1_iyvmu"]
+[ext_resource type="Script" path="res://scenes/main_tutorial.gd" id="1_pfxkw"]
+[ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="3_hoa2r"]
+[ext_resource type="FontFile" uid="uid://okj3ogrjimt3" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="4_0s57j"]
+[ext_resource type="FontFile" uid="uid://p3aq77yu12fw" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="4_huswa"]
+
+[sub_resource type="Gradient" id="Gradient_wteso"]
+offsets = PackedFloat32Array(0.272727, 0.993506)
+colors = PackedColorArray(0.743856, 0.495286, 0.33002, 1, 0.33287, 0.262971, 0.825274, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_msbnj"]
+gradient = SubResource("Gradient_wteso")
+fill_to = Vector2(0, 1)
+
+[node name="mainTutorial" type="Node2D"]
+script = ExtResource("1_pfxkw")
+
+[node name="bgRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_msbnj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1919.0
+offset_bottom = 1079.0
+
+[node name="LabelNo1" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 92.0
+offset_top = 279.0
+offset_right = 517.0
+offset_bottom = 305.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_hoa2r")
+theme_override_font_sizes/font_size = 15
+text = "1. Type a stock ticker/symbol in! Try TSLA or GOOGL →"
+
+[node name="LabelNo2" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 201.0
+offset_top = 181.0
+offset_right = 626.0
+offset_bottom = 207.0
+rotation = 0.0934227
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_hoa2r")
+theme_override_font_sizes/font_size = 15
+text = "2. Press load graph to start the song! →"
+
+[node name="LabelNo3" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 104.0
+offset_right = 1785.0
+offset_bottom = 239.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_hoa2r")
+theme_override_font_sizes/font_size = 15
+text = "3. Play around and adjust the parameters to your liking! You can adjust:
+     - Stock History (how zoomed out the graph is)
+     - The instrument that plays
+     - The volume and pitch offset of the instrument
+     - How long it takes for the instrument to play again! I recommend low 
+       amounts for plucks or synths and longer times for drums or other instruments"
+
+[node name="LabelNo4" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1413.0
+offset_top = 490.0
+offset_right = 1712.0
+offset_bottom = 732.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_hoa2r")
+theme_override_font_sizes/font_size = 24
+text = "4. When ready, click to go back to the main menu and into the main scene to start experimenting with up to 4 instruments at once!"
+autowrap_mode = 3
+
+[node name="synth" parent="." instance=ExtResource("1_iyvmu")]
+position = Vector2(443, 185)
+
+[node name="startButton" type="Button" parent="."]
+offset_left = 631.0
+offset_top = 792.0
+offset_right = 1285.0
+offset_bottom = 1044.0
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_hoa2r")
+theme_override_font_sizes/font_size = 136
+disabled = true
+text = "Start!"
+
+[node name="ReturnButton" type="Button" parent="."]
+offset_left = 22.0
+offset_top = 861.0
+offset_right = 253.0
+offset_bottom = 900.0
+theme_override_fonts/font = ExtResource("4_huswa")
+theme_override_font_sizes/font_size = 20
+text = "Return to Main Menu
+"
+
+[node name="apiEnter" type="LineEdit" parent="."]
+offset_left = 22.0
+offset_top = 936.0
+offset_right = 406.0
+offset_bottom = 984.0
+theme_override_colors/clear_button_color_pressed = Color(0.705939, 2.23808e-06, 2.88785e-07, 1)
+theme_override_colors/clear_button_color = Color(1, 0, 0.0313726, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0.620428, 0.214962, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_hoa2r")
+placeholder_text = "[Enter TwelveData Key...]"
+alignment = 1
+clear_button_enabled = true
+
+[node name="confirmKeyButton" type="Button" parent="."]
+offset_left = 23.0
+offset_top = 991.0
+offset_right = 439.0
+offset_bottom = 1044.0
+disabled = true
+text = "Confirm Key
+"
+
+[node name="warnLabel" type="Label" parent="."]
+offset_left = 186.0
+offset_top = 380.0
+offset_right = 1816.0
+offset_bottom = 529.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_0s57j")
+theme_override_font_sizes/font_size = 56
+text = "Important! To start, you need to enter your API key. If you're confused, go and see the API key tutorial."
+autowrap_mode = 3
+
+[connection signal="pressed" from="startButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="confirmKeyButton" to="." method="_on_confirm_key_button_pressed"]

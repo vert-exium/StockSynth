@@ -1,20 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://blr0c8nkprrbp"]
+[gd_scene load_steps=16 format=3 uid="uid://blr0c8nkprrbp"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_xex6u"]
 [ext_resource type="Texture2D" uid="uid://dtogsvvlh8q4p" path="res://assets/uparrow.png" id="2_yj0kh"]
 [ext_resource type="Texture2D" uid="uid://bana1yg1apayc" path="res://assets/downarrow.png" id="3_ynfwh"]
-[ext_resource type="FontFile" uid="uid://yjevlpg7tuu5" path="res://fonts/Elms_Sans/static/ElmsSans-Medium.ttf" id="4_ldpub"]
+[ext_resource type="Texture2D" uid="uid://cvuiwybyaaamj" path="res://assets/enterbutton/normal.png" id="4_7id7e"]
 [ext_resource type="FontFile" uid="uid://c6huylfvo1mqw" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="5_ejtio"]
+[ext_resource type="Texture2D" uid="uid://b0j71i5rlx2hx" path="res://assets/enterbutton/pressed.png" id="5_prd24"]
+[ext_resource type="Texture2D" uid="uid://bk67undt28eur" path="res://assets/enterbutton/hovered.png" id="6_1reix"]
 [ext_resource type="FontFile" uid="uid://bmgweqsxi67y3" path="res://fonts/chunk-master/ChunkFive-Regular.otf" id="6_yss5f"]
+[ext_resource type="Texture2D" uid="uid://b5e1m2xu6qvla" path="res://assets/enterbutton/disabled.png" id="7_ua2pc"]
+[ext_resource type="FontFile" uid="uid://okj3ogrjimt3" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="9_usnic"]
+[ext_resource type="FontFile" uid="uid://drom70njqlmsv" path="res://fonts/Elms_Sans/static/ElmsSans-SemiBold.ttf" id="10_6pgr0"]
+[ext_resource type="FontFile" uid="uid://p3aq77yu12fw" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="10_nuahj"]
+[ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="11_merii"]
 
 [sub_resource type="Gradient" id="Gradient_e8iap"]
-colors = PackedColorArray(0.185242, 0.516339, 1, 1, 0.553745, 0.00306901, 0.865632, 1)
+colors = PackedColorArray(0.273873, 0.273873, 0.273873, 1, 0.151276, 0.151276, 0.151276, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8m8wb"]
 gradient = SubResource("Gradient_e8iap")
-width = 512
-height = 512
-fill_to = Vector2(0.688073, 0.683486)
+width = 1024
+height = 1024
+fill_from = Vector2(0.0183486, 0)
+fill_to = Vector2(1, 0.798165)
 
 [node name="mainmenu" type="Node2D"]
 script = ExtResource("1_xex6u")
@@ -25,41 +33,32 @@ offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_8m8wb")
 
 [node name="upArrow" type="TextureRect" parent="."]
-offset_left = -59.0
-offset_top = -225.0
-offset_right = 933.0
-offset_bottom = 822.0
+offset_left = -255.0
+offset_top = -174.0
+offset_right = 737.0
+offset_bottom = 873.0
 texture = ExtResource("2_yj0kh")
 
 [node name="downArrow" type="TextureRect" parent="."]
-offset_left = 1207.0
-offset_top = 195.0
-offset_right = 2107.0
-offset_bottom = 1095.0
+offset_left = 1382.0
+offset_top = 141.0
+offset_right = 2282.0
+offset_bottom = 1041.0
 rotation = 0.166806
 texture = ExtResource("3_ynfwh")
 flip_h = true
 
-[node name="Button" type="Button" parent="."]
-offset_left = 746.0
-offset_top = 474.0
-offset_right = 1184.0
-offset_bottom = 646.0
-theme_override_fonts/font = ExtResource("4_ldpub")
-theme_override_font_sizes/font_size = 126
+[node name="EnterButton" type="TextureButton" parent="."]
+offset_left = 762.0
+offset_top = 520.0
+offset_right = 1962.0
+offset_bottom = 820.0
+scale = Vector2(0.33, 0.33)
 disabled = true
-text = "ENTER"
-
-[node name="apiEnter" type="TextEdit" parent="."]
-offset_left = 747.0
-offset_top = 734.0
-offset_right = 1181.0
-offset_bottom = 836.0
-theme_override_fonts/font = ExtResource("5_ejtio")
-theme_override_font_sizes/font_size = 20
-placeholder_text = "Enter your free API key from TwelveData here! 
-<- get one here"
-wrap_mode = 1
+texture_normal = ExtResource("4_7id7e")
+texture_pressed = ExtResource("5_prd24")
+texture_hover = ExtResource("6_1reix")
+texture_disabled = ExtResource("7_ua2pc")
 
 [node name="titleLabel" type="Label" parent="."]
 offset_left = 239.0
@@ -76,19 +75,97 @@ theme_override_font_sizes/font_size = 251
 text = "StockSynth"
 
 [node name="linkButton" type="LinkButton" parent="."]
-offset_left = 267.0
-offset_top = 804.0
-offset_right = 732.0
-offset_bottom = 844.0
-text = "Get your API key! (https://twelvedata.com/account/api-keys)"
+offset_left = 823.0
+offset_top = 816.0
+offset_right = 1098.0
+offset_bottom = 856.0
+theme_override_colors/font_color = Color(0.515793, 0.672529, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("9_usnic")
+theme_override_font_sizes/font_size = 18
+text = "Get your API key here (free)"
 uri = "https://twelvedata.com/account/api-keys"
 
-[node name="Label" type="Label" parent="."]
-offset_left = 269.0
-offset_top = 750.0
-offset_right = 735.0
-offset_bottom = 799.0
-text = "Navigate to the link below, create an account, go to your 
-settings page, and copy your API key into the box  ------------>"
+[node name="directionLabel" type="Label" parent="."]
+offset_left = 691.0
+offset_top = 732.0
+offset_right = 760.0
+offset_bottom = 756.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("10_nuahj")
+text = "API Key:"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="referencelinevert" type="Line2D" parent="."]
+position = Vector2(736, 384)
+points = PackedVector2Array(224, -744, 224, -416)
+
+[node name="tagline" type="Label" parent="."]
+offset_left = 728.0
+offset_top = 368.0
+offset_right = 1199.0
+offset_bottom = 464.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.654902)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 10
+theme_override_fonts/font = ExtResource("10_6pgr0")
+theme_override_font_sizes/font_size = 45
+text = "Listen to the market."
+
+[node name="referencelinehorizontal" type="Line2D" parent="."]
+position = Vector2(711, 380)
+points = PackedVector2Array(-959, 160, -719, 160)
+width = 1.0
+
+[node name="apiEnter" type="LineEdit" parent="."]
+offset_left = 768.0
+offset_top = 720.0
+offset_right = 1152.0
+offset_bottom = 768.0
+theme_override_colors/clear_button_color_pressed = Color(0.705939, 2.23808e-06, 2.88785e-07, 1)
+theme_override_colors/clear_button_color = Color(1, 0, 0.0313726, 1)
+theme_override_colors/font_placeholder_color = Color(0, 0.620428, 0.214962, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("11_merii")
+placeholder_text = "[Enter TwelveData Key...]"
+alignment = 1
+clear_button_enabled = true
+
+[node name="disclaimer" type="RichTextLabel" parent="."]
+offset_left = 284.0
+offset_top = 1018.0
+offset_right = 1636.0
+offset_bottom = 1045.0
+theme_override_fonts/normal_font = ExtResource("5_ejtio")
+theme_override_fonts/bold_font = ExtResource("11_merii")
+bbcode_enabled = true
+text = "An API key is required to prevent API limits. It's [b][u]free[/u][/b] and simply requires an account. Your key is [b][u]only[/u][/b] stored in memory and is erased after you quit the program."
+
+[node name="tipLabel" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 586.0
+offset_right = 383.0
+offset_bottom = 709.0
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("10_nuahj")
+theme_override_font_sizes/font_size = 30
+text = "Stuck or want tips? Check out the tutorials page!"
+autowrap_mode = 3
+
+[node name="tutorialButton" type="Button" parent="."]
+offset_left = 25.0
+offset_top = 727.0
+offset_right = 250.0
+offset_bottom = 1034.0
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("5_ejtio")
+theme_override_font_sizes/font_size = 46
+text = "Tutorials"
+
+[connection signal="pressed" from="EnterButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]

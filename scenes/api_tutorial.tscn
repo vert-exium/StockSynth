@@ -1,0 +1,134 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgff38h4l1sxi"]
+
+[ext_resource type="Script" path="res://scripts/api_tutorial.gd" id="1_non4t"]
+[ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="2_6niwd"]
+[ext_resource type="Texture2D" uid="uid://cylh0xjf5304f" path="res://assets/apiTut/Screenshot 2026-07-26 214913.png" id="2_vsewh"]
+[ext_resource type="FontFile" uid="uid://c6huylfvo1mqw" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="3_2iav6"]
+[ext_resource type="Texture2D" uid="uid://e6xv1l6x222r" path="res://assets/apiTut/Screenshot 2026-07-26 215012.png" id="3_kcpug"]
+[ext_resource type="Texture2D" uid="uid://dlhi1ehrxh20n" path="res://assets/apiTut/Screenshot 2026-07-26 215202.png" id="4_ktbaa"]
+[ext_resource type="Texture2D" uid="uid://ctq04gbeah234" path="res://assets/apiTut/Screenshot 2026-07-26 215324.png" id="5_868i1"]
+[ext_resource type="Texture2D" uid="uid://ciwmdocxeu8d7" path="res://assets/apiTut/Screenshot 2026-07-26 215408.png" id="6_c7sey"]
+[ext_resource type="FontFile" uid="uid://bipm5mel2bqkc" path="res://fonts/Elms_Sans/static/ElmsSans-Light.ttf" id="9_y06cn"]
+
+[sub_resource type="Gradient" id="Gradient_pclhf"]
+colors = PackedColorArray(0.326422, 0.532407, 1, 1, 0.352625, 0.384377, 0.434203, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s04ld"]
+gradient = SubResource("Gradient_pclhf")
+fill_to = Vector2(0, 1)
+
+[node name="apiTutorial" type="Node2D"]
+script = ExtResource("1_non4t")
+
+[node name="bgRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_s04ld")
+
+[node name="MainLabel" type="Label" parent="."]
+offset_left = 47.0
+offset_top = 905.0
+offset_right = 1545.0
+offset_bottom = 1040.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.454902)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("2_6niwd")
+theme_override_font_sizes/font_size = 40
+text = "This will walk you through the steps necessary to get an API key!"
+autowrap_mode = 3
+
+[node name="returnButton" type="Button" parent="."]
+offset_left = 1590.0
+offset_top = 1013.0
+offset_right = 1903.0
+offset_bottom = 1063.0
+theme_override_fonts/font = ExtResource("3_2iav6")
+theme_override_font_sizes/font_size = 28
+text = "Return to Main Menu"
+
+[node name="advanceButton" type="Button" parent="."]
+offset_left = 1750.0
+offset_top = 864.0
+offset_right = 1903.0
+offset_bottom = 996.0
+theme_override_font_sizes/font_size = 90
+text = "→"
+
+[node name="prevButton" type="Button" parent="."]
+offset_left = 1590.0
+offset_top = 864.0
+offset_right = 1743.0
+offset_bottom = 996.0
+theme_override_font_sizes/font_size = 90
+text = "←"
+
+[node name="texture1" type="TextureRect" parent="."]
+visible = false
+offset_left = 48.0
+offset_top = 57.0
+offset_right = 2049.0
+offset_bottom = 1048.0
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("2_vsewh")
+
+[node name="texture2" type="TextureRect" parent="."]
+visible = false
+offset_left = 52.0
+offset_top = 32.0
+offset_right = 2116.0
+offset_bottom = 1098.0
+scale = Vector2(0.715, 0.715)
+texture = ExtResource("3_kcpug")
+
+[node name="texture3" type="TextureRect" parent="."]
+visible = false
+offset_left = 60.0
+offset_top = 44.0
+offset_right = 2590.0
+offset_bottom = 1296.0
+scale = Vector2(0.61, 0.61)
+texture = ExtResource("4_ktbaa")
+
+[node name="texture4" type="TextureRect" parent="."]
+visible = false
+offset_left = 88.0
+offset_top = 61.0
+offset_right = 2618.0
+offset_bottom = 1313.0
+scale = Vector2(0.61, 0.61)
+texture = ExtResource("5_868i1")
+
+[node name="texture5" type="TextureRect" parent="."]
+visible = false
+offset_left = 83.0
+offset_top = 37.0
+offset_right = 2613.0
+offset_bottom = 1349.0
+scale = Vector2(0.61, 0.61)
+texture = ExtResource("6_c7sey")
+
+[node name="linkButton" type="LinkButton" parent="."]
+visible = false
+offset_left = 48.0
+offset_top = 896.0
+offset_right = 339.0
+offset_bottom = 943.0
+theme_override_font_sizes/font_size = 26
+text = "TwelveData website"
+uri = "https://https://twelvedata.com/account"
+
+[node name="curSlideLabel" type="Label" parent="."]
+offset_left = 1704.0
+offset_top = 778.0
+offset_right = 1790.0
+offset_bottom = 855.0
+theme_override_fonts/font = ExtResource("9_y06cn")
+theme_override_font_sizes/font_size = 56
+text = "1/6"
+
+[connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="advanceButton" to="." method="_on_advance_button_pressed"]
+[connection signal="pressed" from="prevButton" to="." method="_on_prev_button_pressed"]
