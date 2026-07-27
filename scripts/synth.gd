@@ -18,6 +18,20 @@ extends Node2D
 @onready var rhythm_slider: Slider = $ChartUI/RythymSlider
 @onready var rate_label: Label = $ChartUI/rateLabel
 @onready var sound_option: OptionButton = $ChartUI/SoundOption
+@onready var line: Line2D = $ChartUI/WaveformLine
+
+# Assigns a bus variable to each synth node in the main scene. Each synth node needs to
+# be assigned to a different bus so we can capture audio from each audio player and not one
+# for the master bus as then all graphs would be exactly the same
+@export var bus_name: String = "synth1Bus"
+
+
+@export var line_position: Vector2 = Vector2(525, 70) # tells us where to start the line
+var capture_effect: AudioEffectCapture
+var sample_count: int = 256    # resolution of the wave
+var wave_width: float = 200   # width
+var wave_height: float = 35.0  # height scale of the wave
+
 
 # preloads all of the sound files for instruments
 var sound_library: Array[AudioStream] = [
@@ -42,7 +56,7 @@ var current_note_index: int = 0
 var trigger_interval: int = 8
 var tick_counter: int = 0
 
-# Pitch & vol offset tracking
+# Pitch & vol offset tracking variables
 var current_pitch: float = 1.0
 var user_db_offset: float = 0.0     # Range: e.g. -5.0 to +5.0 dB sound offset
 var user_pitch_offset: float = 0.0  # Range: -60% to +60% pitch offset
@@ -62,6 +76,30 @@ func _ready() -> void:
 	_setup_sound_dropdown()
 	sound_option.item_selected.connect(_on_sound_option_selected)
 	
+	line.clear_points()
+	
+	# makes sure line wont move because of UI 
+	line.position = line_position
+	
+	# makes sure the line isn't affected by and doesn't affect other UI elements: trying to bugfix here but it didn't work
+	line.top_level = true
+	
+	# looks for the audio bus specified and the capture effect
+	# that's assigned to the audio bus
+	var bus_idx = AudioServer.get_bus_index(bus_name)
+	if bus_idx == -1:
+		push_error("Audio bus not found: " + bus_name)
+		return
+		
+	for i in range(AudioServer.get_bus_effect_count(bus_idx)):
+		var effect = AudioServer.get_bus_effect(bus_idx, i)
+		if effect is AudioEffectCapture:
+			capture_effect = effect
+			break
+			
+
+
+
 	# Initial setup of variables
 	user_db_offset = vol_slider.value
 	user_pitch_offset = pitch_slider.value
@@ -76,7 +114,11 @@ func _ready() -> void:
 	# hides the scanline and sets status label text
 	scanline.visible = false
 	status_label.text = "Type a ticker symbol and click Load Graph!"
-
+	
+	# fixes a weird bug where the bar would randomly decide to be in the top left
+	$ChartUI/particleToggleBar.position.x = 365
+	$ChartUI/particleToggleBar.position.y = 60
+	
 # adds all options to the sound selector dropdown menu
 func _setup_sound_dropdown() -> void:
 	sound_option.clear()
@@ -169,6 +211,7 @@ func update_time_labels(index: int) -> void:
 #  stops all audio, grabs the currently selected timeframe and stores it in a variable, and then proceeds to check
 #  cache, if so it will start the song. checks for API key, starts a timer to prevent spamming the get stock button
 #  and then requests the data from the server with all relevant info (api key, interval, resolution, and ticker)
+
 func fetch_stock_data(symbol: String) -> void:
 	beat_timer.stop()
 	audio_player.stop()
@@ -395,3 +438,28 @@ func _on_particle_toggle_bar_toggled(toggled_on: bool) -> void:
 		$ChartUI/GraphRect/Scanline/LineGPUParticles.emitting = true
 	elif toggled_on == false:
 		$ChartUI/GraphRect/Scanline/LineGPUParticles.emitting = false
+
+
+
+func _process(delta: float) -> void:
+	if not capture_effect: # checks that there is the capture effect applies
+		return
+		
+	var available = capture_effect.get_frames_available() # gets all captured frames that are avaliable if any
+	if available == 0:
+		return
+		
+	var buffer = capture_effect.get_buffer(min(available, sample_count)) # stores buffer of frames
+	if buffer.is_empty():
+		return
+
+	line.clear_points() # clears the current line
+
+	for i in range(buffer.size()):
+		var amplitude = buffer[i].x
+		
+		# draws the points (goes to x, y, adds point, repeats (for i in range)) 
+		var x = (float(i) / buffer.size()) * wave_width
+		var y = amplitude * wave_height
+		
+		line.add_point(Vector2(x, y))

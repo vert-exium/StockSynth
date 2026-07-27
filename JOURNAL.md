@@ -97,3 +97,12 @@ Some of the code behind the hover system. It gets your position, translates it i
 ![Hover system code!](documentation/pic14.png)
 
 ---
+
+- #### Update 3: I added some cool stuff! I edited the effects of the particles, and added a visualizer for the wave of audio being played currently. How this works: Instead of routing all 4 synth instances (windows) through the master audio bus, it assigns each synth to a seperate audio bus. Then, each of the 4 busses has a "capture" effect where we can capture the audio currently being played. We get the data, and then build a graph using a Line2D that rebuilds points constantly so it can update quickly. All audio from the 4 buses is then routed to the master bus so it can be heard. I never knew Godot came with a audio system as nice as the current one, so it was cool to learn about it and utilize it in this project! I also had some trouble drawing the graph at the desired location and had to mess around with bugfixes until it finally got working.
+
+Here you can see all 4 buses, they all route to the master bus at the end.
+
+![All 4 audio buses!](documentation/pic15audiobus.png)
+ 
+
+---

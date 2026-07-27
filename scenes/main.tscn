@@ -34,14 +34,53 @@ script = ExtResource("1_mjle0")
 [node name="synth" parent="." instance=ExtResource("1_lhhlj")]
 position = Vector2(-50, 0)
 
+[node name="AudioStreamPlayer" parent="synth" index="2"]
+bus = &"synth1Bus"
+
+[node name="particleToggleBar" parent="synth/ChartUI" index="12"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 235.0
+offset_bottom = 28.0
+
 [node name="synth2" parent="." instance=ExtResource("1_lhhlj")]
 position = Vector2(-50, 520)
+bus_name = "synth2Bus"
+
+[node name="AudioStreamPlayer" parent="synth2" index="2"]
+bus = &"synth2Bus"
+
+[node name="particleToggleBar" parent="synth2/ChartUI" index="12"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 235.0
+offset_bottom = 28.0
 
 [node name="synth3" parent="." instance=ExtResource("1_lhhlj")]
 position = Vector2(800, 0)
+bus_name = "synth3Bus"
+
+[node name="AudioStreamPlayer" parent="synth3" index="2"]
+bus = &"synth3Bus"
+
+[node name="particleToggleBar" parent="synth3/ChartUI" index="12"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 235.0
+offset_bottom = 28.0
 
 [node name="synth4" parent="." instance=ExtResource("1_lhhlj")]
 position = Vector2(800, 520)
+bus_name = "synth4Bus"
+
+[node name="AudioStreamPlayer" parent="synth4" index="2"]
+bus = &"synth4Bus"
+
+[node name="particleToggleBar" parent="synth4/ChartUI" index="12"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 235.0
+offset_bottom = 28.0
 
 [node name="StockList1" type="Label" parent="."]
 layout_mode = 0
@@ -148,3 +187,8 @@ default_color = Color(0, 0, 0, 0.752941)
 points = PackedVector2Array(1701, -18, 1701, 1115)
 width = 5.0
 default_color = Color(0, 0, 0, 1)
+
+[editable path="synth"]
+[editable path="synth2"]
+[editable path="synth3"]
+[editable path="synth4"]

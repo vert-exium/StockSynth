@@ -87,9 +87,9 @@ autowrap_mode = 3
 position = Vector2(443, 185)
 
 [node name="startButton" type="Button" parent="."]
-offset_left = 631.0
+offset_left = 613.0
 offset_top = 792.0
-offset_right = 1285.0
+offset_right = 1267.0
 offset_bottom = 1044.0
 theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("3_hoa2r")

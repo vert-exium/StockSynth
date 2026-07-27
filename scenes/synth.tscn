@@ -336,15 +336,21 @@ theme_override_fonts/font = ExtResource("7_yj60m")
 text = "- 60%"
 
 [node name="particleToggleBar" type="CheckButton" parent="ChartUI"]
-offset_left = 656.25
-offset_top = 123.75
-offset_right = 894.25
-offset_bottom = 154.75
+layout_mode = 0
+offset_left = 365.0
+offset_top = 60.0
+offset_right = 600.0
+offset_bottom = 88.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_1j1fq")
 theme_override_font_sizes/font_size = 15
 button_pressed = true
 text = "Scanline Particles Toggle"
+
+[node name="WaveformLine" type="Line2D" parent="ChartUI"]
+points = PackedVector2Array(725, 85, 925, 85)
+width = 1.0
+antialiased = true
 
 [node name="trackerLine" type="Line2D" parent="."]
 visible = false
