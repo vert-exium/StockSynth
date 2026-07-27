@@ -347,6 +347,7 @@ button_pressed = true
 text = "Scanline Particles Toggle"
 
 [node name="trackerLine" type="Line2D" parent="."]
+visible = false
 position = Vector2(0, 126)
 points = PackedVector2Array(0, 0, 0, 351.8)
 width = 5.0
