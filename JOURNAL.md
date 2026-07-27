@@ -26,3 +26,5 @@ smaller things: made comments on my code readable, everything is explained. Not 
 
 ### 7/27/2027
 - #### Update 1: This was originally update 4 yesterday, but I ended up finishing this update in the early morning hours of Monday. There are a ton of QoL improvements with this update! I made the main menu look great, with custom buttons designed in Canva. I changed all fonts to something nicer, and I added a changing dynamic gradient background for the main scene. I made a tutorial menu with a tutorial to get a free API key and another one to get people started using the graphing feature. I also added a stop button for the synth windows, and laid out the main scene a bit nicer. There is also a scrolling list of 60 popular stocks with their symbols, so people can quickly search up their favorite companies! Most of this update was aesthetics focused and I improved allignment across small elemenents and styled them nicer.
+
+- #### Update 2: Added a scan line and info for hovered data points on the graph. I thought it would be cool to include! More small font/aesthetic improvements. Also added particles that follow the scanline, will have to tweak those though!

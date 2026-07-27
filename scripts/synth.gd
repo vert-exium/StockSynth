@@ -49,6 +49,8 @@ var user_pitch_offset: float = 0.0  # Range: -60% to +60% pitch offset
 
 func _ready() -> void:
 	# connects all required signals
+	graph_rect.gui_input.connect(_on_graph_rect_gui_input)
+	graph_rect.mouse_exited.connect(_on_graph_rect_mouse_exited)
 	fetch_button.pressed.connect(_on_fetch_button_pressed)
 	http_request.request_completed.connect(_on_data_received)
 	beat_timer.timeout.connect(_on_timer_timeout)
@@ -311,10 +313,10 @@ func _on_timer_timeout() -> void:
 	# sets target pitch to the current note its on
 	var target_pitch = stock_pitches[current_note_index] 
 	
-	# 1. interpolates the pitch so it isnt super rough, basically smooths it
+	# interpolates the pitch so it isnt super rough, basically smooths it
 	current_pitch = lerp(current_pitch, target_pitch, 0.25)
 	
-	# 2. adds the user pitch offset and makes sure the pitch doesnt hit 0 (min at 0.05)
+	# adds the user pitch offset and makes sure the pitch doesnt hit 0 (min at 0.05)
 	var final_pitch = max(0.05, current_pitch + user_pitch_offset)
 	audio_player.pitch_scale = final_pitch
 	
@@ -344,8 +346,42 @@ func _update_scanline_position() -> void:
 func _on_cooldown_finished() -> void:
 	fetch_button.disabled = false
 
-
+# function to stop the playback of sound
 func _on_stop_button_pressed() -> void:
 	beat_timer.stop()
 	audio_player.stop()
 	scanline.visible = false
+
+func _on_graph_rect_gui_input(event: InputEvent) -> void:
+	# if no data is loaded dont do anything
+	if raw_prices.is_empty():
+		return
+		
+	# check if the mouse is over the textureRect
+	if event is InputEventMouseMotion:
+		var mouse_x = event.position.x
+		var rect_width = graph_rect.size.x
+		
+		# limit mouse x (variable not the actual pos) to the boundaries of the graph
+		var clamped_x = clamp(mouse_x, 0.0, rect_width)
+		
+		# translates the mouse x position into an index value
+		var norm_x = clamped_x / rect_width
+		var hover_index = int(round(norm_x * (raw_prices.size() - 1)))
+		hover_index = clamp(hover_index, 0, raw_prices.size() - 1)
+		
+		# gets the values at the index
+		var hovered_price = raw_prices[hover_index]
+		var hovered_pitch = stock_pitches[hover_index]
+		
+		# displays that value as text
+		status_label.text = "Point #%d | Price: $%.2f | Pitch Multiplier: %.2fx" % [hover_index, hovered_price, hovered_pitch]
+		$trackerLine.position.x = get_local_mouse_position().x
+		$trackerLine.visible = true
+
+
+func _on_graph_rect_mouse_exited() -> void:
+	# resets the status label if the mouse exits
+	if not raw_prices.is_empty():
+		$trackerLine.visible = false
+		status_label.text = "Hover over chart to inspect points."
