@@ -51,13 +51,14 @@ disabled = true
 text = "ENTER"
 
 [node name="apiEnter" type="TextEdit" parent="."]
-offset_left = 749.0
-offset_top = 692.0
-offset_right = 1183.0
-offset_bottom = 856.0
+offset_left = 747.0
+offset_top = 734.0
+offset_right = 1181.0
+offset_bottom = 836.0
 theme_override_fonts/font = ExtResource("5_ejtio")
 theme_override_font_sizes/font_size = 20
-placeholder_text = "Please input your free API key from https://twelvedata.com without any spaces before or after. Sorry! This is required to prevent API limiting."
+placeholder_text = "Enter your free API key from TwelveData here! 
+<- get one here"
 wrap_mode = 1
 
 [node name="titleLabel" type="Label" parent="."]
@@ -73,5 +74,21 @@ theme_override_constants/shadow_outline_size = 25
 theme_override_fonts/font = ExtResource("6_yss5f")
 theme_override_font_sizes/font_size = 251
 text = "StockSynth"
+
+[node name="linkButton" type="LinkButton" parent="."]
+offset_left = 267.0
+offset_top = 804.0
+offset_right = 732.0
+offset_bottom = 844.0
+text = "Get your API key! (https://twelvedata.com/account/api-keys)"
+uri = "https://twelvedata.com/account/api-keys"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 269.0
+offset_top = 750.0
+offset_right = 735.0
+offset_bottom = 799.0
+text = "Navigate to the link below, create an account, go to your 
+settings page, and copy your API key into the box  ------------>"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
