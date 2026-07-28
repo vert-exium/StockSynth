@@ -23,13 +23,13 @@ offset_bottom = 1080.0
 texture = SubResource("GradientTexture2D_fafjc")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 246.0
-offset_top = 80.0
-offset_right = 1738.0
-offset_bottom = 239.0
+offset_left = 625.0
+offset_top = 142.0
+offset_right = 1290.0
+offset_bottom = 304.0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("1_xry3s")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Welcome to the tutorial menu! This will walk you through all of the steps to get started!"
 autowrap_mode = 3
 

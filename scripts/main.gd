@@ -30,4 +30,4 @@ func _on_stock_list_button_pressed() -> void:
 
 func _on_button_cooldown_timer_timeout() -> void:
 	$stockListButton.disabled = false
-	
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						   
