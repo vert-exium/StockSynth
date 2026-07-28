@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cwkvora02nvy2"]
 
 [ext_resource type="PackedScene" uid="uid://qsc3s4tokwgq" path="res://scenes/synth.tscn" id="1_iyvmu"]
-[ext_resource type="Script" path="res://scenes/main_tutorial.gd" id="1_pfxkw"]
+[ext_resource type="Script" path="res://scripts/main_tutorial.gd" id="1_pfxkw"]
 [ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="3_hoa2r"]
 [ext_resource type="FontFile" uid="uid://okj3ogrjimt3" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="4_0s57j"]
 [ext_resource type="FontFile" uid="uid://p3aq77yu12fw" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="4_huswa"]
@@ -56,10 +56,10 @@ text = "2. Press load graph to start the song! →"
 [node name="LabelNo3" type="Label" parent="Control"]
 visible = false
 layout_mode = 0
-offset_left = 1131.0
-offset_top = 104.0
-offset_right = 1785.0
-offset_bottom = 239.0
+offset_left = 1253.0
+offset_top = 103.0
+offset_right = 1907.0
+offset_bottom = 261.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_hoa2r")
 theme_override_font_sizes/font_size = 15
@@ -68,15 +68,16 @@ text = "3. Play around and adjust the parameters to your liking! You can adjust:
      - The instrument that plays
      - The volume and pitch offset of the instrument
      - How long it takes for the instrument to play again! I recommend low 
-       amounts for plucks or synths and longer times for drums or other instruments"
+       amounts for plucks or synths and longer times for drums or other instruments
+     - Filters such as reverb to make your song sound even better!"
 
 [node name="LabelNo4" type="Label" parent="Control"]
 visible = false
 layout_mode = 0
-offset_left = 1413.0
-offset_top = 490.0
-offset_right = 1712.0
-offset_bottom = 732.0
+offset_left = 1437.0
+offset_top = 530.0
+offset_right = 1736.0
+offset_bottom = 772.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_hoa2r")
 theme_override_font_sizes/font_size = 24

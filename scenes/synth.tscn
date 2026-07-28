@@ -405,26 +405,6 @@ theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_1j1fq")
 text = "Reverb"
 
-[node name="zeroReverbLabel" type="Label" parent="ReverbLabel"]
-offset_left = -8.0
-offset_top = 32.0
-offset_right = 14.0
-offset_bottom = 52.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_hmmff")
-theme_override_font_sizes/font_size = 15
-text = "0%"
-
-[node name="maxReverbLabel" type="Label" parent="ReverbLabel"]
-offset_left = 72.0
-offset_top = 32.0
-offset_right = 112.0
-offset_bottom = 55.0
-theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("5_hmmff")
-theme_override_font_sizes/font_size = 15
-text = "100%"
-
 [node name="DistortionLabel" type="Label" parent="."]
 offset_left = 851.0
 offset_top = 305.0
@@ -481,6 +461,33 @@ offset_left = 72.0
 offset_top = 33.0
 offset_right = 112.0
 offset_bottom = 56.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hmmff")
+theme_override_font_sizes/font_size = 15
+text = "100%"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 609.0
+offset_top = 18.0
+offset_right = 810.0
+offset_bottom = 102.0
+color = Color(0.136826, 0.136826, 0.136826, 0.682353)
+
+[node name="zeroReverbLabel" type="Label" parent="."]
+offset_left = 844.0
+offset_top = 275.0
+offset_right = 866.0
+offset_bottom = 295.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_hmmff")
+theme_override_font_sizes/font_size = 15
+text = "0%"
+
+[node name="maxReverbLabel" type="Label" parent="."]
+offset_left = 924.0
+offset_top = 275.0
+offset_right = 964.0
+offset_bottom = 298.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_hmmff")
 theme_override_font_sizes/font_size = 15

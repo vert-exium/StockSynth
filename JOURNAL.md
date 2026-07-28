@@ -107,4 +107,23 @@ Here you can see all 4 buses, they all route to the master bus at the end.
 
 ---
 
-- #### Update 4: It's been a while since I edited this journal. Originally, I wanted to create a recording system so you could record your audio and have it saved to your userfolder. This was buggy and I didn't get it to work, so I eventually abandoned the project. It was really hard to figure out Godot's audio system and how to capture and write the audio data to a file. Instead, I added three new effects. For each panel, you can now adjust reverb, distortion, and delay on the fly. I originally planned for two or three more effects, but they didn't work well so I decided these 3 were enough. It was fairly difficult to implement, I had to create the effects on all 4 audio busses, which took about 20 minutes to tweak all of the values (I had to edit each effect 4x, once for each bus, so there were like ~120 values I had to edit). After that, I had to figure out how to actually apply the effects via. the sliders. It ended up not being very difficult though as I just had to connect a few functions in order to get it to work. 
+- #### Update 4: It's been a while since I edited this journal. Originally, I wanted to create a recording system so you could record your audio and have it saved to your userfolder. This was buggy and I didn't get it to work, so I eventually abandoned the project. It was really hard to figure out Godot's audio system and how to capture and write the audio data to a file. Instead, I added three new effects. For each panel, you can now adjust reverb, distortion, and delay on the fly. I originally planned for two or three more effects, but they didn't work well so I decided these 3 were enough. It was fairly difficult to implement, I had to create the effects on all 4 audio busses, which took about 20 minutes to tweak all of the values (I had to edit each effect 4x, once for each bus, so there were like ~120 values I had to edit). After that, I had to figure out how to actually apply the effects via. the sliders. It ended up not being very difficult though as I just had to connect a few functions in order to get it to work.
+
+Some behind the scenes:
+![WIP Effects](documentation/pic16makingeffects.png)
+
+---
+
+- #### Update 5: Close to 20 (tracked, I've worked for a good amount more than 20) hours worked on this project so far! This will most likely be the last major update. I fixed a lot of small bugs, as well as deleting the infinitely scrolling list of stocks and instead replacing it with a button that shows/hides a list. This increases the amount of space on the screen and reduces clutter.
+
+As well as these small improvements, I made the default splash screen a static grey box, but I added a fake loading screen that takes a few seconds to dissapear. I loved using tweens to smoothly fade the elements of the loading screen. 
+
+
+---
+
+### Final thoughts:
+
+I loved making this project! Even though I spent an insane amount of time on it over the past few days, it's been a great learning experience and has taught me so many things about Godot I didn't know before that I can now utilize in future projects! I learned a bunch of things in FL Studio too, and I really enjoyed how creative this project was. I got to make custom sounds, UI, and other features that were a nice twist of fun from the usual coding. I've never used https and APIs or really anything network related before, and this project was a great chance to get more experience in Godot and share my creativity! 
+I learned a ton of things about making projects look more aesthetically pleasing, as a large point of this project was aesthetics based and I really needed to focus on small details like picking good fonts and making sure elements lined up with each other. 
+
+--- 

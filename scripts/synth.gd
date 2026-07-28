@@ -32,7 +32,7 @@ var delay_effect
 @export var bus_name: String = "synth1Bus"
 
 
-@export var line_position: Vector2 = Vector2(525, 70) # tells us where to start the line
+@export var line_position: Vector2 = Vector2(610, 65) # tells us where to start the line
 var capture_effect: AudioEffectCapture
 var sample_count: int = 256    # resolution of the wave
 var wave_width: float = 200   # width

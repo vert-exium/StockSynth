@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://blr0c8nkprrbp"]
+[gd_scene load_steps=21 format=3 uid="uid://blr0c8nkprrbp"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_xex6u"]
 [ext_resource type="Texture2D" uid="uid://dtogsvvlh8q4p" path="res://assets/uparrow.png" id="2_yj0kh"]
@@ -13,6 +13,7 @@
 [ext_resource type="FontFile" uid="uid://drom70njqlmsv" path="res://fonts/Elms_Sans/static/ElmsSans-SemiBold.ttf" id="10_6pgr0"]
 [ext_resource type="FontFile" uid="uid://p3aq77yu12fw" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="10_nuahj"]
 [ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="11_merii"]
+[ext_resource type="Texture2D" uid="uid://dy1h0clm6j2ao" path="res://assets/LGSplashScreen.png" id="14_7eoax"]
 
 [sub_resource type="Gradient" id="Gradient_e8iap"]
 colors = PackedColorArray(0.273873, 0.273873, 0.273873, 1, 0.151276, 0.151276, 0.151276, 1)
@@ -23,6 +24,22 @@ width = 1024
 height = 1024
 fill_from = Vector2(0.0183486, 0)
 fill_to = Vector2(1, 0.798165)
+
+[sub_resource type="Gradient" id="Gradient_l38v2"]
+offsets = PackedFloat32Array(0, 0.991266)
+colors = PackedColorArray(0.765791, 0.513411, 0.282199, 1, 0.262745, 0.270588, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5ilgg"]
+gradient = SubResource("Gradient_l38v2")
+width = 256
+height = 256
+fill_to = Vector2(0.0854701, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuxvy"]
+bg_color = Color(0.118581, 0.118581, 0.118581, 0.784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mm8vt"]
+bg_color = Color(0.860369, 0.860369, 0.860369, 1)
 
 [node name="mainmenu" type="Node2D"]
 script = ExtResource("1_xex6u")
@@ -167,5 +184,59 @@ theme_override_fonts/font = ExtResource("5_ejtio")
 theme_override_font_sizes/font_size = 46
 text = "Tutorials"
 
+[node name="backRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_5ilgg")
+
+[node name="texture" type="TextureRect" parent="."]
+offset_left = 272.0
+offset_right = 3872.0
+offset_bottom = 1800.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_7eoax")
+
+[node name="progBar" type="ProgressBar" parent="."]
+offset_left = 384.0
+offset_top = 760.0
+offset_right = 1536.0
+offset_bottom = 824.0
+mouse_filter = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_tuxvy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_mm8vt")
+step = 0.1
+show_percentage = false
+
+[node name="opacityTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="loadingLabel" type="Label" parent="."]
+offset_left = 752.0
+offset_top = 705.0
+offset_right = 1163.0
+offset_bottom = 751.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.572549)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 10
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("10_nuahj")
+theme_override_font_sizes/font_size = 35
+text = "Getting things ready..."
+
+[node name="percentLabel" type="Label" parent="."]
+offset_left = 896.0
+offset_top = 832.0
+offset_right = 1024.0
+offset_bottom = 904.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.572549)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("10_nuahj")
+theme_override_font_sizes/font_size = 20
+text = "0%"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="EnterButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="timeout" from="opacityTimer" to="." method="_on_opacity_timer_timeout"]

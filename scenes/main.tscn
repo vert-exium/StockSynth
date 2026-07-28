@@ -36,7 +36,7 @@ texture = SubResource("GradientTexture2D_4hl0f")
 script = ExtResource("1_mjle0")
 
 [node name="synth" parent="." instance=ExtResource("1_lhhlj")]
-position = Vector2(-50, 0)
+position = Vector2(-100, -10)
 
 [node name="AudioStreamPlayer" parent="synth" index="2"]
 bus = &"synth1Bus"
@@ -47,14 +47,8 @@ offset_top = 0.0
 offset_right = 235.0
 offset_bottom = 28.0
 
-[node name="zeroReverbLabel" parent="synth/ReverbLabel" index="0"]
-layout_mode = 0
-
-[node name="maxReverbLabel" parent="synth/ReverbLabel" index="1"]
-layout_mode = 0
-
 [node name="synth2" parent="." instance=ExtResource("1_lhhlj")]
-position = Vector2(-50, 520)
+position = Vector2(-100, 542)
 bus_name = "synth2Bus"
 
 [node name="AudioStreamPlayer" parent="synth2" index="2"]
@@ -66,14 +60,8 @@ offset_top = 0.0
 offset_right = 235.0
 offset_bottom = 28.0
 
-[node name="zeroReverbLabel" parent="synth2/ReverbLabel" index="0"]
-layout_mode = 0
-
-[node name="maxReverbLabel" parent="synth2/ReverbLabel" index="1"]
-layout_mode = 0
-
 [node name="synth3" parent="." instance=ExtResource("1_lhhlj")]
-position = Vector2(800, 0)
+position = Vector2(763, -10)
 bus_name = "synth3Bus"
 
 [node name="AudioStreamPlayer" parent="synth3" index="2"]
@@ -158,14 +146,8 @@ offset_right = 235.0
 offset_bottom = 28.0
 metadata/_edit_use_anchors_ = true
 
-[node name="zeroReverbLabel" parent="synth3/ReverbLabel" index="0"]
-layout_mode = 0
-
-[node name="maxReverbLabel" parent="synth3/ReverbLabel" index="1"]
-layout_mode = 0
-
 [node name="synth4" parent="." instance=ExtResource("1_lhhlj")]
-position = Vector2(800, 520)
+position = Vector2(763, 542)
 bus_name = "synth4Bus"
 
 [node name="AudioStreamPlayer" parent="synth4" index="2"]
@@ -176,25 +158,6 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 235.0
 offset_bottom = 28.0
-
-[node name="zeroReverbLabel" parent="synth4/ReverbLabel" index="0"]
-layout_mode = 0
-
-[node name="maxReverbLabel" parent="synth4/ReverbLabel" index="1"]
-layout_mode = 0
-
-[node name="vertDiv" type="Line2D" parent="."]
-position = Vector2(10, 0)
-points = PackedVector2Array(850, 1113, 850, -97)
-width = 5.0
-default_color = Color(0, 0, 0, 0.752941)
-antialiased = true
-
-[node name="horizDiv" type="Line2D" parent="."]
-position = Vector2(0, 8)
-points = PackedVector2Array(-30, 530, 1701, 530)
-width = 5.0
-default_color = Color(0, 0, 0, 0.752941)
 
 [node name="stopButton" type="TextureButton" parent="."]
 visible = false
@@ -216,7 +179,7 @@ layout_mode = 0
 offset_left = 1665.0
 offset_top = 16.0
 offset_right = 1915.0
-offset_bottom = 59.0
+offset_bottom = 94.0
 theme_override_fonts/font = ExtResource("11_dcp3s")
 theme_override_font_sizes/font_size = 25
 text = "Popular Stock List <"
