@@ -363,27 +363,27 @@ antialiased = true
 [node name="ReverbSlider" type="HSlider" parent="ChartUI"]
 layout_mode = 0
 offset_left = 1012.5
-offset_top = 341.25
+offset_top = 391.25
 offset_right = 1155.5
-offset_bottom = 357.25
+offset_bottom = 407.25
 max_value = 0.5
 step = 0.01
 
 [node name="DistortionSlider" type="HSlider" parent="ChartUI"]
 layout_mode = 0
 offset_left = 1012.5
-offset_top = 417.5
+offset_top = 467.5
 offset_right = 1155.5
-offset_bottom = 433.5
+offset_bottom = 483.5
 max_value = 0.4
 step = 0.01
 
 [node name="DelaySlider" type="HSlider" parent="ChartUI"]
 layout_mode = 0
 offset_left = 1012.5
-offset_top = 496.25
+offset_top = 546.25
 offset_right = 1155.5
-offset_bottom = 512.25
+offset_bottom = 562.25
 min_value = -60.0
 max_value = -6.0
 step = 0.5
@@ -398,18 +398,18 @@ default_color = Color(1, 1, 1, 0.596078)
 
 [node name="ReverbLabel" type="Label" parent="."]
 offset_left = 852.0
-offset_top = 243.0
+offset_top = 283.0
 offset_right = 908.0
-offset_bottom = 266.0
+offset_bottom = 306.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_1j1fq")
 text = "Reverb"
 
 [node name="DistortionLabel" type="Label" parent="."]
 offset_left = 851.0
-offset_top = 305.0
+offset_top = 345.0
 offset_right = 929.0
-offset_bottom = 328.0
+offset_bottom = 368.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_1j1fq")
 text = "Distortion"
@@ -438,9 +438,9 @@ text = "100%"
 
 [node name="DelayLabel" type="Label" parent="."]
 offset_left = 852.0
-offset_top = 367.0
+offset_top = 407.0
 offset_right = 897.0
-offset_bottom = 390.0
+offset_bottom = 430.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("6_1j1fq")
 text = "Delay"
@@ -475,9 +475,9 @@ color = Color(0.136826, 0.136826, 0.136826, 0.682353)
 
 [node name="zeroReverbLabel" type="Label" parent="."]
 offset_left = 844.0
-offset_top = 275.0
+offset_top = 315.0
 offset_right = 866.0
-offset_bottom = 295.0
+offset_bottom = 335.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_hmmff")
 theme_override_font_sizes/font_size = 15
@@ -485,13 +485,27 @@ text = "0%"
 
 [node name="maxReverbLabel" type="Label" parent="."]
 offset_left = 924.0
-offset_top = 275.0
+offset_top = 315.0
 offset_right = 964.0
-offset_bottom = 298.0
+offset_bottom = 338.0
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_hmmff")
 theme_override_font_sizes/font_size = 15
 text = "100%"
+
+[node name="fxLabel" type="Label" parent="."]
+offset_left = 843.0
+offset_top = 256.0
+offset_right = 921.0
+offset_bottom = 282.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.811765)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("7_yj60m")
+theme_override_font_sizes/font_size = 20
+text = "Effects:"
 
 [connection signal="pressed" from="ChartUI/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="value_changed" from="ChartUI/GraphRect/VolSlider" to="." method="_on_vol_slider_value_changed"]

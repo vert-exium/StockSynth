@@ -131,6 +131,7 @@ func _ready() -> void:
 	
 	delay_effect.tap1_level_db = -60
 	delay_effect.feedback_level_db = -60
+
 # adds all options to the sound selector dropdown menu
 func _setup_sound_dropdown() -> void:
 	sound_option.clear()

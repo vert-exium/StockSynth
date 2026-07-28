@@ -126,4 +126,6 @@ As well as these small improvements, I made the default splash screen a static g
 I loved making this project! Even though I spent an insane amount of time on it over the past few days, it's been a great learning experience and has taught me so many things about Godot I didn't know before that I can now utilize in future projects! I learned a bunch of things in FL Studio too, and I really enjoyed how creative this project was. I got to make custom sounds, UI, and other features that were a nice twist of fun from the usual coding. I've never used https and APIs or really anything network related before, and this project was a great chance to get more experience in Godot and share my creativity! 
 I learned a ton of things about making projects look more aesthetically pleasing, as a large point of this project was aesthetics based and I really needed to focus on small details like picking good fonts and making sure elements lined up with each other. 
 
+Enjoy the app! I look forward to making many more projects that are just as fun as this! 
+
 --- 
