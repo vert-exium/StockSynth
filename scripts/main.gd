@@ -1,25 +1,33 @@
 extends Control
 
+var stockListIsShown = false
+var tween: Tween
 
-# Size for stock lists:
-# 209 x 1080
-# First list default pos:
-# 1708 x 0 y
-# Second list default pos:
-# 1708 x - 1080 y
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _on_stock_list_button_pressed() -> void:
+	if stockListIsShown == false:
+		$buttonCooldownTimer.start()
+		$stockListButton.disabled = true
+		var tween = create_tween()
+		tween.set_parallel()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property($stockListButton, "position:x", 1475, 1.0)
+		tween.tween_property($stocklist, "position:x", 1735, 1.0)
+		$stockListButton.text = "Popular Stock List >"
+		stockListIsShown = true
+	elif stockListIsShown == true:
+		$buttonCooldownTimer.start()
+		$stockListButton.disabled = true
+		var tween = create_tween()
+		tween.set_parallel()
+		tween.set_trans(Tween.TRANS_QUART)
+		tween.set_ease(Tween.EASE_OUT)
+		tween.tween_property($stockListButton, "position:x", 1665, 1.0)
+		tween.tween_property($stocklist, "position:x", 1930, 1.0)
+		$stockListButton.text = "Popular Stock List <"
+		stockListIsShown = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func _physics_process(delta: float) -> void:
-	$StockList1.position.y += 0.5
-	$StockList2.position.y += 0.5
-	if $StockList1.position.y >= 1080:
-		$StockList1.position.y = -1080
-	if $StockList2.position.y >= 1080:
-		$StockList2.position.y = -1080
+func _on_button_cooldown_timer_timeout() -> void:
+	$stockListButton.disabled = false
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						   

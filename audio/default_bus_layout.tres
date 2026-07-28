@@ -1,16 +1,144 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://dgerlxgey3sf3"]
+[gd_resource type="AudioBusLayout" load_steps=25 format=3 uid="uid://dgerlxgey3sf3"]
 
 [sub_resource type="AudioEffectCapture" id="AudioEffectCapture_7a53m"]
 resource_name = "Capture"
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_lvqvl"]
+resource_name = "Reverb"
+predelay_msec = 20.0
+room_size = 0.5
+hipass = 0.25
+wet = 0.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_ca5al"]
+resource_name = "Distortion"
+mode = 3
+keep_hf_hz = 12000.0
+post_gain = -2.0
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_i2tku"]
+resource_name = "Compressor"
+threshold = -12.0
+gain = 2.0
+attack_us = 2000.0
+release_ms = 120.0
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_3exx4"]
+resource_name = "Filter"
+cutoff_hz = 20000.0
+resonance = 0.2
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_8yguy"]
+resource_name = "Delay"
+tap1_level_db = -60.0
+tap2_active = false
+feedback_active = true
+feedback_level_db = -12.0
+
 [sub_resource type="AudioEffectCapture" id="AudioEffectCapture_btu1i"]
 resource_name = "Capture"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_y3hea"]
+resource_name = "Reverb"
+predelay_msec = 20.0
+room_size = 0.5
+hipass = 0.25
+wet = 0.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_wv7e1"]
+resource_name = "Distortion"
+mode = 3
+keep_hf_hz = 12000.0
+post_gain = -2.0
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_kn26j"]
+resource_name = "Compressor"
+threshold = -12.0
+gain = 2.0
+attack_us = 2000.0
+release_ms = 120.0
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_m2ckc"]
+resource_name = "Filter"
+cutoff_hz = 20000.0
+resonance = 0.2
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_xw83a"]
+resource_name = "Delay"
+tap1_level_db = -60.0
+tap2_active = false
+feedback_active = true
+feedback_level_db = -12.0
 
 [sub_resource type="AudioEffectCapture" id="AudioEffectCapture_otmhf"]
 resource_name = "Capture"
 
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_v3gol"]
+resource_name = "Reverb"
+predelay_msec = 20.0
+room_size = 0.5
+hipass = 0.25
+wet = 0.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_kjo23"]
+resource_name = "Distortion"
+mode = 3
+keep_hf_hz = 12000.0
+post_gain = -2.0
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_0xaiw"]
+resource_name = "Compressor"
+threshold = -12.0
+gain = 2.0
+attack_us = 2000.0
+release_ms = 120.0
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_ycpbb"]
+resource_name = "Filter"
+cutoff_hz = 20000.0
+resonance = 0.2
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_08w8d"]
+resource_name = "Delay"
+tap1_level_db = -60.0
+tap2_active = false
+feedback_active = true
+feedback_level_db = -12.0
+
 [sub_resource type="AudioEffectCapture" id="AudioEffectCapture_0d05v"]
 resource_name = "Capture"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_lgrt5"]
+resource_name = "Reverb"
+predelay_msec = 20.0
+room_size = 0.5
+hipass = 0.25
+wet = 0.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_coghj"]
+resource_name = "Distortion"
+mode = 3
+keep_hf_hz = 12000.0
+post_gain = -2.0
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_p26gb"]
+resource_name = "Compressor"
+threshold = -12.0
+gain = 2.0
+attack_us = 2000.0
+release_ms = 120.0
+
+[sub_resource type="AudioEffectFilter" id="AudioEffectFilter_7lu47"]
+resource_name = "Filter"
+cutoff_hz = 20000.0
+resonance = 0.2
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_q48oa"]
+resource_name = "Delay"
+tap1_level_db = -60.0
+tap2_active = false
+feedback_active = true
+feedback_level_db = -12.0
 
 [resource]
 bus/1/name = &"synth1Bus"
@@ -21,6 +149,16 @@ bus/1/volume_db = 0.0
 bus/1/send = &"Master"
 bus/1/effect/0/effect = SubResource("AudioEffectCapture_7a53m")
 bus/1/effect/0/enabled = true
+bus/1/effect/1/effect = SubResource("AudioEffectReverb_lvqvl")
+bus/1/effect/1/enabled = true
+bus/1/effect/2/effect = SubResource("AudioEffectDistortion_ca5al")
+bus/1/effect/2/enabled = true
+bus/1/effect/3/effect = SubResource("AudioEffectCompressor_i2tku")
+bus/1/effect/3/enabled = false
+bus/1/effect/4/effect = SubResource("AudioEffectFilter_3exx4")
+bus/1/effect/4/enabled = true
+bus/1/effect/5/effect = SubResource("AudioEffectDelay_8yguy")
+bus/1/effect/5/enabled = true
 bus/2/name = &"synth2Bus"
 bus/2/solo = false
 bus/2/mute = false
@@ -29,6 +167,16 @@ bus/2/volume_db = 0.0
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectCapture_btu1i")
 bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectReverb_y3hea")
+bus/2/effect/1/enabled = true
+bus/2/effect/2/effect = SubResource("AudioEffectDistortion_wv7e1")
+bus/2/effect/2/enabled = true
+bus/2/effect/3/effect = SubResource("AudioEffectCompressor_kn26j")
+bus/2/effect/3/enabled = false
+bus/2/effect/4/effect = SubResource("AudioEffectFilter_m2ckc")
+bus/2/effect/4/enabled = true
+bus/2/effect/5/effect = SubResource("AudioEffectDelay_xw83a")
+bus/2/effect/5/enabled = true
 bus/3/name = &"synth3Bus"
 bus/3/solo = false
 bus/3/mute = false
@@ -37,6 +185,16 @@ bus/3/volume_db = 0.0
 bus/3/send = &"Master"
 bus/3/effect/0/effect = SubResource("AudioEffectCapture_otmhf")
 bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectReverb_v3gol")
+bus/3/effect/1/enabled = true
+bus/3/effect/2/effect = SubResource("AudioEffectDistortion_kjo23")
+bus/3/effect/2/enabled = true
+bus/3/effect/3/effect = SubResource("AudioEffectCompressor_0xaiw")
+bus/3/effect/3/enabled = false
+bus/3/effect/4/effect = SubResource("AudioEffectFilter_ycpbb")
+bus/3/effect/4/enabled = true
+bus/3/effect/5/effect = SubResource("AudioEffectDelay_08w8d")
+bus/3/effect/5/enabled = true
 bus/4/name = &"synth4Bus"
 bus/4/solo = false
 bus/4/mute = false
@@ -45,3 +203,13 @@ bus/4/volume_db = 0.0
 bus/4/send = &"Master"
 bus/4/effect/0/effect = SubResource("AudioEffectCapture_0d05v")
 bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource("AudioEffectReverb_lgrt5")
+bus/4/effect/1/enabled = true
+bus/4/effect/2/effect = SubResource("AudioEffectDistortion_coghj")
+bus/4/effect/2/enabled = true
+bus/4/effect/3/effect = SubResource("AudioEffectCompressor_p26gb")
+bus/4/effect/3/enabled = false
+bus/4/effect/4/effect = SubResource("AudioEffectFilter_7lu47")
+bus/4/effect/4/enabled = true
+bus/4/effect/5/effect = SubResource("AudioEffectDelay_q48oa")
+bus/4/effect/5/enabled = true

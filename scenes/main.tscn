@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci8i0wd300xu8"]
+[gd_scene load_steps=11 format=3 uid="uid://ci8i0wd300xu8"]
 
 [ext_resource type="PackedScene" uid="uid://qsc3s4tokwgq" path="res://scenes/synth.tscn" id="1_lhhlj"]
 [ext_resource type="Script" path="res://scripts/back_rect.gd" id="1_mjle0"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_s684v"]
 [ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="4_5egbx"]
+[ext_resource type="Texture2D" uid="uid://btxvlrufoctlr" path="res://assets/recButton/4.png" id="7_vrfno"]
+[ext_resource type="Texture2D" uid="uid://ck4b1u4cnf3q6" path="res://assets/recButton/6.png" id="8_ovyj3"]
+[ext_resource type="Texture2D" uid="uid://c5h2stnr1a3pm" path="res://assets/recButton/5.png" id="9_br7p8"]
+[ext_resource type="FontFile" uid="uid://c6huylfvo1mqw" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="11_dcp3s"]
 
 [sub_resource type="Gradient" id="Gradient_vdcla"]
 offsets = PackedFloat32Array(0.0060241, 1)
@@ -63,11 +67,84 @@ bus_name = "synth3Bus"
 [node name="AudioStreamPlayer" parent="synth3" index="2"]
 bus = &"synth3Bus"
 
+[node name="ChartUI" parent="synth3" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="RythymSlider" parent="synth3/ChartUI" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="30msLabel" parent="synth3/ChartUI/RythymSlider" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="1920msLabel" parent="synth3/ChartUI/RythymSlider" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="TickerInput" parent="synth3/ChartUI" index="1"]
+metadata/_edit_use_anchors_ = true
+
+[node name="FetchButton" parent="synth3/ChartUI" index="2"]
+metadata/_edit_use_anchors_ = true
+
+[node name="StopButton" parent="synth3/ChartUI" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="GraphRect" parent="synth3/ChartUI" index="5"]
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusLabel" parent="synth3/ChartUI/GraphRect" index="2"]
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabelStart" parent="synth3/ChartUI/GraphRect" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabelEnd" parent="synth3/ChartUI/GraphRect" index="4"]
+metadata/_edit_use_anchors_ = true
+
+[node name="VolSlider" parent="synth3/ChartUI/GraphRect" index="5"]
+metadata/_edit_use_anchors_ = true
+
+[node name="VolLabel" parent="synth3/ChartUI/GraphRect" index="6"]
+metadata/_edit_use_anchors_ = true
+
+[node name="MaxVolLabel" parent="synth3/ChartUI/GraphRect" index="7"]
+metadata/_edit_use_anchors_ = true
+
+[node name="MinVolLabel" parent="synth3/ChartUI/GraphRect" index="8"]
+metadata/_edit_use_anchors_ = true
+
+[node name="PitchSlider" parent="synth3/ChartUI/GraphRect" index="9"]
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionButton" parent="synth3/ChartUI" index="6"]
+metadata/_edit_use_anchors_ = true
+
+[node name="timescaleLabel" parent="synth3/ChartUI" index="7"]
+metadata/_edit_use_anchors_ = true
+
+[node name="SoundOption" parent="synth3/ChartUI" index="8"]
+metadata/_edit_use_anchors_ = true
+
+[node name="rateLabel" parent="synth3/ChartUI" index="9"]
+metadata/_edit_use_anchors_ = true
+
+[node name="instrumentLabel" parent="synth3/ChartUI" index="10"]
+metadata/_edit_use_anchors_ = true
+
+[node name="pitchOffsetLabel" parent="synth3/ChartUI" index="11"]
+metadata/_edit_use_anchors_ = true
+
+[node name="plusLabel" parent="synth3/ChartUI/pitchOffsetLabel" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="minusLabel" parent="synth3/ChartUI/pitchOffsetLabel" index="1"]
+metadata/_edit_use_anchors_ = true
+
 [node name="particleToggleBar" parent="synth3/ChartUI" index="12"]
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 235.0
 offset_bottom = 28.0
+metadata/_edit_use_anchors_ = true
 
 [node name="synth4" parent="." instance=ExtResource("1_lhhlj")]
 position = Vector2(800, 520)
@@ -82,94 +159,6 @@ offset_top = 0.0
 offset_right = 235.0
 offset_bottom = 28.0
 
-[node name="StockList1" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1708.0
-offset_right = 1917.0
-offset_bottom = 1080.0
-theme_override_constants/line_spacing = 7
-theme_override_fonts/font = ExtResource("4_5egbx")
-theme_override_font_sizes/font_size = 22
-text = "Apple: AAPL
-Tesla: TSLA
-Amazon: AMZN
-NVIDIA: NVDA
-Google: GOOGL
-Microsoft: MSFT
-Meta: META
-Netflix: NFLX
-Disney: DIS
-PayPal: PYPL
-AMD: AMD
-Intel: INTC
-Boeing: BA
-Walmart: WMT
-Target: TGT
-Pfizer: PFE
-Chevron: CVX
-Nike: NKE
-Oracle: ORCL
-Uber: UBER
-Airbnb: ABNB
-Coinbase: COIN
-Palantir: PLTR
-Roblox: RBLX
-Spotify: SPOT
-Shopify: SHOP
-Adobe: ADBE
-Block: SQ
-Ford: F
-GM: GM"
-
-[node name="StockList2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1708.0
-offset_top = -1080.0
-offset_right = 1917.0
-theme_override_constants/line_spacing = 7
-theme_override_fonts/font = ExtResource("4_5egbx")
-theme_override_font_sizes/font_size = 22
-text = "JPMorgan: JPM
-Visa: V
-Mastercard: MA
-ExxonMobil: XOM
-Costco: COST
-PepsiCo: PEP
-Coca-Cola: KO
-McDonald's: MCD
-AT&T: T
-Verizon: VZ
-T-Mobile: TMUS
-Walmart: WMT
-FedEx: FDX
-Citigroup: C
-Broadcom: AVGO
-Qualcomm: QCOM
-Cisco: CSCO
-IBM: IBM
-Sony: SONY
-eBay: EBAY
-Zoom: ZM
-Roku: ROKU
-Delta Air: DAL
-Snapchat: SNAP
-United: UAL
-Wells Fargo: WFC
-Starbucks: SBUX
-UPS: UPS
-Marriott: MAR
-Hasbro: HAS"
-
-[node name="StockLabelHeader" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1423.0
-offset_top = 21.0
-offset_right = 1697.0
-offset_bottom = 67.0
-theme_override_fonts/font = ExtResource("4_5egbx")
-theme_override_font_sizes/font_size = 35
-text = "Popular Stocks:"
-
 [node name="vertDiv" type="Line2D" parent="."]
 position = Vector2(10, 0)
 points = PackedVector2Array(850, 1113, 850, -97)
@@ -183,10 +172,74 @@ points = PackedVector2Array(-30, 530, 1701, 530)
 width = 5.0
 default_color = Color(0, 0, 0, 0.752941)
 
-[node name="vertRightDiv" type="Line2D" parent="."]
-points = PackedVector2Array(1701, -18, 1701, 1115)
-width = 5.0
-default_color = Color(0, 0, 0, 1)
+[node name="stopButton" type="TextureButton" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1695.0
+offset_top = 169.0
+offset_right = 3315.0
+offset_bottom = 553.0
+scale = Vector2(0.12, 0.12)
+texture_normal = ExtResource("7_vrfno")
+texture_pressed = ExtResource("8_ovyj3")
+texture_hover = ExtResource("9_br7p8")
+
+[node name="buttonCooldownTimer" type="Timer" parent="."]
+wait_time = 0.6
+
+[node name="stockListButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1665.0
+offset_top = 16.0
+offset_right = 1915.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("11_dcp3s")
+theme_override_font_sizes/font_size = 25
+text = "Popular Stock List <"
+
+[node name="stocklist" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1930.0
+offset_top = 5.0
+offset_right = 2192.0
+offset_bottom = 1085.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("4_5egbx")
+theme_override_font_sizes/font_size = 20
+text = "Apple: AAPL
+Microsoft: MSFT
+Nvidia: NVDA
+Amazon: AMZN
+Google: GOOGL
+Meta: META
+Tesla: TSLA
+Netflix: NFLX
+Walmart: WMT
+Visa: V
+Mastercard: MA
+Disney: DIS
+Pepsi: PEP
+Coca-Cola: KO
+Pfizer: PFE
+Intel: INTC
+AMD: AMD
+Nike: NKE
+Starbucks: SBUX
+Costco: COST
+Boeing: BA
+Chevron: CVX
+Oracle: ORCL
+Adobe: ADBE
+Uber: UBER
+PayPal: PYPL
+Target: TGT
+Ford: F
+GM: GM
+AT&T: T"
+
+[connection signal="pressed" from="stopButton" to="." method="_on_stop_button_pressed"]
+[connection signal="timeout" from="buttonCooldownTimer" to="." method="_on_button_cooldown_timer_timeout"]
+[connection signal="pressed" from="stockListButton" to="." method="_on_stock_list_button_pressed"]
 
 [editable path="synth"]
 [editable path="synth2"]

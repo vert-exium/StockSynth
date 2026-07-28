@@ -39,9 +39,10 @@ volume_db = 6.0
 [node name="ChartUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = -3.0
-offset_right = 1920.0
-offset_bottom = 1077.0
+offset_left = 29.0
+offset_top = -8.0
+offset_right = 1949.0
+offset_bottom = 1072.0
 scale = Vector2(0.8, 0.8)
 mouse_filter = 2
 
@@ -105,6 +106,7 @@ offset_left = 232.75
 offset_top = 43.0
 offset_right = 352.75
 offset_bottom = 103.0
+theme_override_colors/font_color = Color(0.989844, 5.48691e-06, 9.62615e-07, 1)
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_hmmff")
 text = "Stop Song"
@@ -173,12 +175,12 @@ theme_override_fonts/font = ExtResource("7_yj60m")
 theme_override_font_sizes/font_size = 25
 text = "Now"
 
-[node name="VolSlider" type="VSlider" parent="ChartUI/GraphRect"]
+[node name="VolSlider" type="HSlider" parent="ChartUI/GraphRect"]
 layout_mode = 0
-offset_left = 886.0
-offset_top = 21.5
-offset_right = 957.0
-offset_bottom = 151.5
+offset_left = 916.0
+offset_top = 15.25
+offset_right = 1057.0
+offset_bottom = 34.25
 min_value = -5.0
 max_value = 5.0
 step = 0.1
@@ -186,39 +188,39 @@ step = 0.1
 [node name="VolLabel" type="Label" parent="ChartUI/GraphRect"]
 layout_mode = 0
 offset_left = 917.25
-offset_top = -4.75
+offset_top = -3.5
 offset_right = 1022.25
-offset_bottom = 23.25
+offset_bottom = 24.5
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_hmmff")
 text = "Volume Offset"
 
 [node name="MaxVolLabel" type="Label" parent="ChartUI/GraphRect"]
 layout_mode = 0
-offset_left = 933.5
-offset_top = 16.5
-offset_right = 975.5
-offset_bottom = 39.5
+offset_left = 1014.75
+offset_top = 35.25
+offset_right = 1056.75
+offset_bottom = 58.25
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_1j1fq")
 text = "+5db"
 
 [node name="MinVolLabel" type="Label" parent="ChartUI/GraphRect"]
 layout_mode = 0
-offset_left = 933.5
-offset_top = 134.0
-offset_right = 975.5
-offset_bottom = 157.0
+offset_left = 917.25
+offset_top = 35.25
+offset_right = 959.25
+offset_bottom = 58.25
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("7_yj60m")
 text = "-5db"
 
-[node name="PitchSlider" type="VSlider" parent="ChartUI/GraphRect"]
+[node name="PitchSlider" type="HSlider" parent="ChartUI/GraphRect"]
 layout_mode = 0
 offset_left = 916.0
-offset_top = 242.75
-offset_right = 933.0
-offset_bottom = 428.75
+offset_top = 79.75
+offset_right = 1057.0
+offset_bottom = 95.75
 min_value = -0.6
 max_value = 0.6
 step = 0.05
@@ -307,30 +309,29 @@ text = "Instrument:"
 
 [node name="pitchOffsetLabel" type="Label" parent="ChartUI"]
 layout_mode = 0
-offset_left = 1017.5
-offset_top = 380.0
-offset_right = 1119.5
-offset_bottom = 403.0
+offset_left = 1016.25
+offset_top = 221.25
+offset_right = 1118.25
+offset_bottom = 244.25
 theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("5_hmmff")
 text = "Pitch Offset"
 
 [node name="plusLabel" type="Label" parent="ChartUI/pitchOffsetLabel"]
 layout_mode = 0
-offset_left = 21.25
-offset_top = 20.0
-offset_right = 71.25
-offset_bottom = 43.0
+offset_left = 91.25
+offset_top = 35.0
+offset_right = 141.25
+offset_bottom = 58.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("7_yj60m")
 text = "+ 60%"
 
 [node name="minusLabel" type="Label" parent="ChartUI/pitchOffsetLabel"]
 layout_mode = 0
-offset_left = 21.25
-offset_top = 192.5
-offset_right = 70.25
-offset_bottom = 215.5
+offset_top = 35.0
+offset_right = 49.0
+offset_bottom = 58.0
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("7_yj60m")
 text = "- 60%"
@@ -352,6 +353,46 @@ points = PackedVector2Array(725, 85, 925, 85)
 width = 1.0
 antialiased = true
 
+[node name="ReverbSlider" type="HSlider" parent="ChartUI"]
+layout_mode = 0
+offset_left = 1012.5
+offset_top = 301.25
+offset_right = 1155.5
+offset_bottom = 317.25
+max_value = 0.5
+step = 0.01
+
+[node name="DistortionSlider" type="HSlider" parent="ChartUI"]
+layout_mode = 0
+offset_left = 1012.5
+offset_top = 351.25
+offset_right = 1155.5
+offset_bottom = 367.25
+max_value = 0.4
+step = 0.01
+
+[node name="FilterSlider" type="HSlider" parent="ChartUI"]
+layout_mode = 0
+offset_left = 1012.5
+offset_top = 401.25
+offset_right = 1155.5
+offset_bottom = 417.25
+min_value = 200.0
+max_value = 20000.0
+step = 10.0
+value = 200.0
+
+[node name="DelaySlider" type="HSlider" parent="ChartUI"]
+layout_mode = 0
+offset_left = 1012.5
+offset_top = 451.25
+offset_right = 1155.5
+offset_bottom = 467.25
+min_value = -60.0
+max_value = -6.0
+step = 0.5
+value = -6.0
+
 [node name="trackerLine" type="Line2D" parent="."]
 visible = false
 position = Vector2(0, 126)
@@ -362,3 +403,7 @@ default_color = Color(1, 1, 1, 0.596078)
 [connection signal="pressed" from="ChartUI/StopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="value_changed" from="ChartUI/GraphRect/VolSlider" to="." method="_on_vol_slider_value_changed"]
 [connection signal="toggled" from="ChartUI/particleToggleBar" to="." method="_on_particle_toggle_bar_toggled"]
+[connection signal="value_changed" from="ChartUI/ReverbSlider" to="." method="_on_reverb_slider_value_changed"]
+[connection signal="value_changed" from="ChartUI/DistortionSlider" to="." method="_on_distortion_slider_value_changed"]
+[connection signal="changed" from="ChartUI/FilterSlider" to="." method="_on_filter_slider_changed"]
+[connection signal="value_changed" from="ChartUI/DelaySlider" to="." method="_on_delay_slider_value_changed"]

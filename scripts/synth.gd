@@ -20,6 +20,14 @@ extends Node2D
 @onready var sound_option: OptionButton = $ChartUI/SoundOption
 @onready var line: Line2D = $ChartUI/WaveformLine
 
+# Variables for each effect on the bus (except for capture which is used for the visualizer)
+var reverb_effect
+var distortion_effect
+var filter_effect
+var compressor_effect
+var delay_effect
+
+
 # Assigns a bus variable to each synth node in the main scene. Each synth node needs to
 # be assigned to a different bus so we can capture audio from each audio player and not one
 # for the master bus as then all graphs would be exactly the same
@@ -39,7 +47,7 @@ var sound_library: Array[AudioStream] = [
 	preload("res://audio/kick.wav"),
 	preload("res://audio/c5woodblock.wav"),
 	preload("res://audio/c4pad.wav"),
-	preload("res://audio/c4noteshort.wav"),
+	preload("res://audio/C4noteshort.wav"),
 	preload("res://audio/c4otherplucknum3.wav"),
 	preload("res://audio/c4retropluck.wav"),
 	preload("res://audio/c4squaresynth.wav")
@@ -76,13 +84,21 @@ func _ready() -> void:
 	_setup_sound_dropdown()
 	sound_option.item_selected.connect(_on_sound_option_selected)
 	
+	# Maps variables to effects on the audio busses
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	reverb_effect = AudioServer.get_bus_effect(bus_index, 1)
+	distortion_effect = AudioServer.get_bus_effect(bus_index, 2)
+	filter_effect = AudioServer.get_bus_effect(bus_index, 4)
+	delay_effect = AudioServer.get_bus_effect(bus_index, 5)
+	
+	# Assign audio player bus
+	audio_player.bus = bus_name
+
 	line.clear_points()
 	
-	# makes sure line wont move because of UI 
-	line.position = line_position
-	
-	# makes sure the line isn't affected by and doesn't affect other UI elements: trying to bugfix here but it didn't work
+	# makes sure line position is relative to this panel
 	line.top_level = true
+	line.global_position = global_position + line_position
 	
 	# looks for the audio bus specified and the capture effect
 	# that's assigned to the audio bus
@@ -96,9 +112,6 @@ func _ready() -> void:
 		if effect is AudioEffectCapture:
 			capture_effect = effect
 			break
-			
-
-
 
 	# Initial setup of variables
 	user_db_offset = vol_slider.value
@@ -170,10 +183,10 @@ func _on_fetch_button_pressed() -> void:
 		return
 	fetch_stock_data(symbol)
 
-#      index for all of the time options. Each one is assigned to a number (1-7)
-#      and is given the interval between each data point (e.g. 1 hr), and then 
-#      specifies the number of nodes (resolution) of the graph. This data is used
-#      to let the API know how to serve the requested data/how we should request it
+#     index for all of the time options. Each one is assigned to a number (1-7)
+#     and is given the interval between each data point (e.g. 1 hr), and then 
+#     specifies the number of nodes (resolution) of the graph. This data is used
+#     to let the API know how to serve the requested data/how we should request it
 
 func get_timeframe_config(index: int) -> Dictionary:
 	match index:
@@ -313,7 +326,6 @@ func draw_stock_graph(prices: Array[float]) -> void:
 # converts raw price data to pitches to be played by the scanline
 func convert_prices_to_pitches(prices: Array[float]) -> void:
 	stock_pitches.clear()
-	
 	var min_price = prices.min()
 	var max_price = prices.max()
 	if min_price == max_price: max_price += 0.01
@@ -440,8 +452,7 @@ func _on_particle_toggle_bar_toggled(toggled_on: bool) -> void:
 		$ChartUI/GraphRect/Scanline/LineGPUParticles.emitting = false
 
 
-
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not capture_effect: # checks that there is the capture effect applies
 		return
 		
@@ -463,3 +474,17 @@ func _process(delta: float) -> void:
 		var y = amplitude * wave_height
 		
 		line.add_point(Vector2(x, y))
+
+
+func _on_reverb_slider_value_changed(value: float) -> void:
+	reverb_effect.wet = value
+
+
+func _on_distortion_slider_value_changed(value: float) -> void:
+	distortion_effect.drive = value
+
+func _on_filter_slider_changed(value: float) -> void:
+	filter_effect.cutoff_hz = value
+
+func _on_delay_slider_value_changed(value: float) -> void:
+	delay_effect.tap1_level_db = value
