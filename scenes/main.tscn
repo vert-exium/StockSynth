@@ -47,6 +47,12 @@ offset_top = 0.0
 offset_right = 235.0
 offset_bottom = 28.0
 
+[node name="zeroReverbLabel" parent="synth/ReverbLabel" index="0"]
+layout_mode = 0
+
+[node name="maxReverbLabel" parent="synth/ReverbLabel" index="1"]
+layout_mode = 0
+
 [node name="synth2" parent="." instance=ExtResource("1_lhhlj")]
 position = Vector2(-50, 520)
 bus_name = "synth2Bus"
@@ -60,6 +66,12 @@ offset_top = 0.0
 offset_right = 235.0
 offset_bottom = 28.0
 
+[node name="zeroReverbLabel" parent="synth2/ReverbLabel" index="0"]
+layout_mode = 0
+
+[node name="maxReverbLabel" parent="synth2/ReverbLabel" index="1"]
+layout_mode = 0
+
 [node name="synth3" parent="." instance=ExtResource("1_lhhlj")]
 position = Vector2(800, 0)
 bus_name = "synth3Bus"
@@ -67,7 +79,7 @@ bus_name = "synth3Bus"
 [node name="AudioStreamPlayer" parent="synth3" index="2"]
 bus = &"synth3Bus"
 
-[node name="ChartUI" parent="synth3" index="3"]
+[node name="ChartUI" parent="synth3" index="4"]
 metadata/_edit_use_anchors_ = true
 
 [node name="RythymSlider" parent="synth3/ChartUI" index="0"]
@@ -146,6 +158,12 @@ offset_right = 235.0
 offset_bottom = 28.0
 metadata/_edit_use_anchors_ = true
 
+[node name="zeroReverbLabel" parent="synth3/ReverbLabel" index="0"]
+layout_mode = 0
+
+[node name="maxReverbLabel" parent="synth3/ReverbLabel" index="1"]
+layout_mode = 0
+
 [node name="synth4" parent="." instance=ExtResource("1_lhhlj")]
 position = Vector2(800, 520)
 bus_name = "synth4Bus"
@@ -158,6 +176,12 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 235.0
 offset_bottom = 28.0
+
+[node name="zeroReverbLabel" parent="synth4/ReverbLabel" index="0"]
+layout_mode = 0
+
+[node name="maxReverbLabel" parent="synth4/ReverbLabel" index="1"]
+layout_mode = 0
 
 [node name="vertDiv" type="Line2D" parent="."]
 position = Vector2(10, 0)

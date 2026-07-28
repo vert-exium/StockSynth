@@ -23,8 +23,6 @@ extends Node2D
 # Variables for each effect on the bus (except for capture which is used for the visualizer)
 var reverb_effect
 var distortion_effect
-var filter_effect
-var compressor_effect
 var delay_effect
 
 
@@ -88,8 +86,7 @@ func _ready() -> void:
 	var bus_index = AudioServer.get_bus_index(bus_name)
 	reverb_effect = AudioServer.get_bus_effect(bus_index, 1)
 	distortion_effect = AudioServer.get_bus_effect(bus_index, 2)
-	filter_effect = AudioServer.get_bus_effect(bus_index, 4)
-	delay_effect = AudioServer.get_bus_effect(bus_index, 5)
+	delay_effect = AudioServer.get_bus_effect(bus_index, 3)
 	
 	# Assign audio player bus
 	audio_player.bus = bus_name
@@ -132,6 +129,8 @@ func _ready() -> void:
 	$ChartUI/particleToggleBar.position.x = 365
 	$ChartUI/particleToggleBar.position.y = 60
 	
+	delay_effect.tap1_level_db = -60
+	delay_effect.feedback_level_db = -60
 # adds all options to the sound selector dropdown menu
 func _setup_sound_dropdown() -> void:
 	sound_option.clear()
@@ -483,8 +482,6 @@ func _on_reverb_slider_value_changed(value: float) -> void:
 func _on_distortion_slider_value_changed(value: float) -> void:
 	distortion_effect.drive = value
 
-func _on_filter_slider_changed(value: float) -> void:
-	filter_effect.cutoff_hz = value
-
 func _on_delay_slider_value_changed(value: float) -> void:
 	delay_effect.tap1_level_db = value
+	delay_effect.feedback_level_db = value
