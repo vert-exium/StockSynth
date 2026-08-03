@@ -70,7 +70,7 @@ Sneakpeek behind making the sounds in FL Studio!
 
 ---
 
-### 7/27/2027
+### 7/27/2026
 - #### Update 1: This was originally update 4 yesterday, but I ended up finishing this update in the early morning hours of Monday. There are a ton of QoL improvements with this update! I made the main menu look great, with custom buttons designed in Canva. I changed all fonts to something nicer, and I added a changing dynamic gradient background for the main scene. I made a tutorial menu with a tutorial to get a free API key and another one to get people started using the graphing feature. I also added a stop button for the synth windows, and laid out the main scene a bit nicer. There is also a scrolling list of 60 popular stocks with their symbols, so people can quickly search up their favorite companies! Most of this update was aesthetics focused and I improved allignment across small elemenents and styled them nicer.
 
 
@@ -127,6 +127,6 @@ I loved making this project! Even though I spent an insane amount of time on it 
 I learned a ton of things about making projects look more aesthetically pleasing, as a large point of this project was aesthetics based and I really needed to focus on small details like picking good fonts and making sure elements lined up with each other. 
 
 --- 
-- #### Update 6: Small changes! I added another tutorial. This is the effects tutorial, which teaches you what each effect does and how to utilize them in your songs! I also added dynamic loading messages! There are over 30 possible loading messages now and they change several times throughout the loading process. I also adjusted fonts and buttons so that the UI looks a lot cleaner! The effects tutorial also features gradients over a picture of 1 of the 4 windows, so that when it's talking about a certain slider that slider lights up on the picture. I also added tips that cycle every few seconds in the main scene, so it's a lot easier to make good songs! I hope you guys enjoy this project, it's been super fun to work on! This is most likely one of the final updates for the game!
+- #### 8/3/2026: Update 6: Small changes! I added another tutorial. This is the effects tutorial, which teaches you what each effect does and how to utilize them in your songs! I also added dynamic loading messages! There are over 30 possible loading messages now and they change several times throughout the loading process. I also adjusted fonts and buttons so that the UI looks a lot cleaner! The effects tutorial also features gradients over a picture of 1 of the 4 windows, so that when it's talking about a certain slider that slider lights up on the picture. I also added tips that cycle every few seconds in the main scene, so it's a lot easier to make good songs! I hope you guys enjoy this project, it's been super fun to work on! This is most likely one of the final updates for the game!
 
 ---
