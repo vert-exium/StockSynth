@@ -1,0 +1,132 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6ec8pw41q4aa"]
+
+[ext_resource type="Script" path="res://scripts/effects_tutorial.gd" id="1_4ncnr"]
+[ext_resource type="FontFile" uid="uid://0qfeqxwmpnh6" path="res://fonts/Elms_Sans/static/ElmsSans-Bold.ttf" id="2_xgm3f"]
+[ext_resource type="FontFile" uid="uid://c6huylfvo1mqw" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="3_qyuyj"]
+[ext_resource type="Texture2D" uid="uid://bykbkpjp6k7u" path="res://assets/screenshot.png" id="4_w748d"]
+[ext_resource type="Texture2D" uid="uid://c85obpmmqtbbi" path="res://gradient.png" id="5_3kdyn"]
+
+[sub_resource type="Gradient" id="Gradient_wteso"]
+offsets = PackedFloat32Array(0, 0.829694)
+colors = PackedColorArray(1.63645e-06, 0.60193, 0.786629, 1, 0.33287, 0.262971, 0.825274, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yrfr4"]
+gradient = SubResource("Gradient_wteso")
+fill_to = Vector2(0, 1)
+
+[node name="effects_tutorial" type="Node2D"]
+script = ExtResource("1_4ncnr")
+
+[node name="bgRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_yrfr4")
+
+[node name="HeaderLabel" type="Label" parent="."]
+offset_left = 520.0
+offset_top = 184.0
+offset_right = 1330.0
+offset_bottom = 251.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_xgm3f")
+theme_override_font_sizes/font_size = 51
+text = "Welcome to the effects tutorial!"
+
+[node name="returnButton" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 912.0
+offset_right = 398.0
+offset_bottom = 1024.0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_xgm3f")
+theme_override_font_sizes/font_size = 25
+text = "Return to Main Menu"
+
+[node name="fwdButton" type="Button" parent="."]
+offset_left = 714.0
+offset_top = 912.0
+offset_right = 930.0
+offset_bottom = 1024.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_xgm3f")
+theme_override_font_sizes/font_size = 25
+text = "Next"
+
+[node name="backButton" type="Button" parent="."]
+offset_left = 448.0
+offset_top = 912.0
+offset_right = 664.0
+offset_bottom = 1024.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_xgm3f")
+theme_override_font_sizes/font_size = 25
+text = "Back
+"
+
+[node name="bodyLabel" type="Label" parent="."]
+offset_left = 256.0
+offset_top = 256.0
+offset_right = 1664.0
+offset_bottom = 640.0
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("3_qyuyj")
+theme_override_font_sizes/font_size = 20
+text = "Body Text!"
+autowrap_mode = 2
+
+[node name="texture" type="TextureRect" parent="."]
+offset_left = 976.0
+offset_top = 652.0
+offset_right = 2270.0
+offset_bottom = 1410.0
+scale = Vector2(0.49, 0.49)
+texture = ExtResource("4_w748d")
+
+[node name="gradientTexture1" type="TextureRect" parent="."]
+modulate = Color(0, 0.780392, 0.298039, 0.576471)
+offset_left = 1480.0
+offset_top = 728.0
+offset_right = 2185.0
+offset_bottom = 1648.0
+scale = Vector2(0.16, 0.087)
+texture = ExtResource("5_3kdyn")
+
+[node name="gradientTexture2" type="TextureRect" parent="."]
+modulate = Color(0, 0.780392, 0.298039, 0.576471)
+offset_left = 1120.0
+offset_top = 968.0
+offset_right = 2420.0
+offset_bottom = 1443.0
+scale = Vector2(0.16, 0.087)
+texture = ExtResource("5_3kdyn")
+
+[node name="gradientTexture3" type="TextureRect" parent="."]
+modulate = Color(0, 0.780392, 0.298039, 0.576471)
+offset_left = 1480.0
+offset_top = 810.0
+offset_right = 2185.0
+offset_bottom = 1285.0
+scale = Vector2(0.16, 0.087)
+texture = ExtResource("5_3kdyn")
+
+[node name="gradientTexture4" type="TextureRect" parent="."]
+modulate = Color(0, 0.780392, 0.298039, 0.576471)
+offset_left = 1480.0
+offset_top = 854.0
+offset_right = 2185.0
+offset_bottom = 1329.0
+scale = Vector2(0.16, 0.087)
+texture = ExtResource("5_3kdyn")
+
+[node name="gradientTexture5" type="TextureRect" parent="."]
+modulate = Color(0, 0.780392, 0.298039, 0.576471)
+offset_left = 1480.0
+offset_top = 902.0
+offset_right = 2185.0
+offset_bottom = 1377.0
+scale = Vector2(0.16, 0.087)
+texture = ExtResource("5_3kdyn")
+
+[connection signal="pressed" from="returnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="fwdButton" to="." method="_on_fwd_button_pressed"]
+[connection signal="pressed" from="backButton" to="." method="_on_back_button_pressed"]

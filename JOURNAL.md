@@ -127,3 +127,5 @@ I loved making this project! Even though I spent an insane amount of time on it 
 I learned a ton of things about making projects look more aesthetically pleasing, as a large point of this project was aesthetics based and I really needed to focus on small details like picking good fonts and making sure elements lined up with each other. 
 
 --- 
+- #### Update 6: Small changes! I added another tutorial. This is the effects tutorial, which teaches you what each effect does and how to utilize them in your songs! I also added dynamic loading messages! There are over 30 possible loading messages now and they change several times throughout the loading process. I also adjusted fonts and buttons so that the UI looks a lot cleaner! The effects tutorial also features gradients over a picture of 1 of the 4 windows, so that when it's talking about a certain slider that slider lights up on the picture. I also added tips that cycle every few seconds in the main scene, so it's a lot easier to make good songs!
+---

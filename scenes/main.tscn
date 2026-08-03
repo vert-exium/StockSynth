@@ -180,6 +180,7 @@ offset_left = 1665.0
 offset_top = 16.0
 offset_right = 1915.0
 offset_bottom = 94.0
+theme_override_constants/outline_size = 5
 theme_override_fonts/font = ExtResource("11_dcp3s")
 theme_override_font_sizes/font_size = 25
 text = "Popular Stock List <"
@@ -224,9 +225,20 @@ Ford: F
 GM: GM
 AT&T: T"
 
+[node name="tipLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 511.0
+offset_right = 1452.0
+offset_bottom = 534.0
+horizontal_alignment = 1
+
+[node name="tipUpdateTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="stopButton" to="." method="_on_stop_button_pressed"]
 [connection signal="timeout" from="buttonCooldownTimer" to="." method="_on_button_cooldown_timer_timeout"]
 [connection signal="pressed" from="stockListButton" to="." method="_on_stock_list_button_pressed"]
+[connection signal="timeout" from="tipUpdateTimer" to="." method="_on_tip_update_label_timeout"]
 
 [editable path="synth"]
 [editable path="synth2"]

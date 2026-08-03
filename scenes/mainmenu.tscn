@@ -212,10 +212,10 @@ wait_time = 3.0
 one_shot = true
 
 [node name="loadingLabel" type="Label" parent="."]
-offset_left = 752.0
-offset_top = 705.0
-offset_right = 1163.0
-offset_bottom = 751.0
+offset_left = 544.0
+offset_top = 704.0
+offset_right = 1376.0
+offset_bottom = 750.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.572549)
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 3
@@ -224,6 +224,7 @@ theme_override_constants/shadow_outline_size = 15
 theme_override_fonts/font = ExtResource("10_nuahj")
 theme_override_font_sizes/font_size = 35
 text = "Getting things ready..."
+horizontal_alignment = 1
 
 [node name="percentLabel" type="Label" parent="."]
 offset_left = 896.0
@@ -237,6 +238,9 @@ theme_override_font_sizes/font_size = 20
 text = "0%"
 horizontal_alignment = 1
 
+[node name="loadingLabelTimer" type="Timer" parent="."]
+
 [connection signal="pressed" from="EnterButton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="tutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="timeout" from="opacityTimer" to="." method="_on_opacity_timer_timeout"]
+[connection signal="timeout" from="loadingLabelTimer" to="." method="_on_loading_label_timer_timeout"]

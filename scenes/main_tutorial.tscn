@@ -6,12 +6,12 @@
 [ext_resource type="FontFile" uid="uid://okj3ogrjimt3" path="res://fonts/Elms_Sans/static/ElmsSans-Black.ttf" id="4_0s57j"]
 [ext_resource type="FontFile" uid="uid://p3aq77yu12fw" path="res://fonts/Elms_Sans/static/ElmsSans-ExtraBold.ttf" id="4_huswa"]
 
-[sub_resource type="Gradient" id="Gradient_wteso"]
+[sub_resource type="Gradient" id="Gradient_hke88"]
 offsets = PackedFloat32Array(0.272727, 0.993506)
 colors = PackedColorArray(0.743856, 0.495286, 0.33002, 1, 0.33287, 0.262971, 0.825274, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_msbnj"]
-gradient = SubResource("Gradient_wteso")
+gradient = SubResource("Gradient_hke88")
 fill_to = Vector2(0, 1)
 
 [node name="mainTutorial" type="Node2D"]
