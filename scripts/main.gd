@@ -58,7 +58,3 @@ func _on_tip_update_label_timeout() -> void:
 		$tipLabel.text = "You can use up to 4 different instruments at once!"
 	elif rng == 10:
 		$tipLabel.text = "There's a cool visualizer!"
-	elif rng == 11:
-		$tipLabel.text = ""
-	elif rng == 12:
-		
