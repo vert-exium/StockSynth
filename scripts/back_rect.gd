@@ -1,6 +1,7 @@
 extends TextureRect
 
 # color palletes, currently using 5 that transiiton between eachother
+# each pair is a color pallete, you can add more by adding more lines in the list
 const PALETTE_LIST = [
 	{ # greens:
 		"color_top": Color("66cc77"),
@@ -73,7 +74,6 @@ func _calculate_and_apply_colors():
 		"color_top": mixed_top,
 		"color_bottom": mixed_bottom
 	})
-
 
 func _update_gradient_colors(palette: Dictionary):
 	if gradient_resource.get_point_count() >= 2:

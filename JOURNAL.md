@@ -126,7 +126,19 @@ As well as these small improvements, I made the default splash screen a static g
 I loved making this project! Even though I spent an insane amount of time on it over the past few days, it's been a great learning experience and has taught me so many things about Godot I didn't know before that I can now utilize in future projects! I learned a bunch of things in FL Studio too, and I really enjoyed how creative this project was. I got to make custom sounds, UI, and other features that were a nice twist of fun from the usual coding. I've never used https and APIs or really anything network related before, and this project was a great chance to get more experience in Godot and share my creativity! 
 I learned a ton of things about making projects look more aesthetically pleasing, as a large point of this project was aesthetics based and I really needed to focus on small details like picking good fonts and making sure elements lined up with each other. 
 
+P.S (surprise!) there are a few more updates I added after I thought I finished
+
 --- 
 - #### 8/3/2026: Update 6: Small changes! I added another tutorial. This is the effects tutorial, which teaches you what each effect does and how to utilize them in your songs! I also added dynamic loading messages! There are over 30 possible loading messages now and they change several times throughout the loading process. I also adjusted fonts and buttons so that the UI looks a lot cleaner! The effects tutorial also features gradients over a picture of 1 of the 4 windows, so that when it's talking about a certain slider that slider lights up on the picture. I also added tips that cycle every few seconds in the main scene, so it's a lot easier to make good songs! I hope you guys enjoy this project, it's been super fun to work on! This is most likely one of the final updates for the game!
 
 ---
+
+- #### 8/5/2026: Update 7: Most likely the last update apart from small stuff! I added some more tip messages as there were only 10. I also went through all of the scripts in the project and made sure any new features and old features that I hadn't added comments to had comments. 
+
+---
+
+- ### Hopefully actual final thoughts:
+
+This was an amazing project. I learned so much about Godot that I didn't know before. Godot's audio system, indexes, how to update my code, and I learned good habits like making sure all of my code had comments! It was so fun to build this and show some creativity instead of making a generic project or something in a common category. I've also never worked with HTTPS requests and APIs before so it was great to explore how Godot can interact with online features as well as local things. Even though I spent almost 9 hours a day for a few days on this, it was amazing to work on this and invent new features and to polish everything!
+
+I hope you enjoy this project that I spent a lot of time on! It was great to work on this as part of Hack club. You can learn more about them at https://https://hackclub.com/ and this specific program at https://pulsewidth.hackclub.com/

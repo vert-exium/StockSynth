@@ -13,7 +13,8 @@ StockSynth is a tool that utilizes stock market data to adjust parameters for di
 ---
 
 ## How it works:
+	### When you press the load song button, these four steps happen:
  - 1: **Cache Check:** The program checks the local memory to see if the stock has been saved in memory from a previous search. If it has, then it will load from cache, saving API credit usage.
  - 2: **API/Error Handling:** If the stock isn't present in the cache, it calls TwelveData's API and handles or prints any errors.
  - 3: **Graph Mapping:** The program calculates the scale of the graph so that all stocks work seamlessly, and then draws it using API information.
- - 4: **Audio Playback:** The scanline moves across the graph, playing the selected noise and adjusting it based on user settings and adjusting the pitch based on the stock graph.
+ - 4: **Audio Playback:** The scanline moves across the graph, playing the sound the user selected. It also applies volume and pitch offsets, and applies effects such as distortion if the user turned them on.

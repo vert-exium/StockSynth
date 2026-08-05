@@ -3,12 +3,15 @@ extends Node2D
 
 var currentSlide = 1
 
-# Called when the node enters the scene tree for the first time.
+# sets up the header and body label texts
 func _ready() -> void:
 	$HeaderLabel.text = "Welcome to the effects tutorial!"
 	$bodyLabel.text = "This tutorial will teach you how effects work and what each effect does!"
 	_hideall()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+
+
+# Checks if the current slide number is at the minimum or maximum, and if so it will disable/enable the correct buttons
 func _process(delta: float) -> void:
 	if currentSlide < 2:
 		$backButton.disabled = true
@@ -22,7 +25,7 @@ func _process(delta: float) -> void:
 func _on_return_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
-
+# Same as the back button, checks what the currentslide number is and then updates the header and body label texts to match.
 func _on_fwd_button_pressed() -> void:
 	if currentSlide < 6:
 		currentSlide += 1
@@ -56,6 +59,8 @@ func _on_fwd_button_pressed() -> void:
 		$HeaderLabel.text = "Good luck!"
 		$bodyLabel.text = "That's it for this tutorial! Press the return to main menu button if you're ready to start, or press the back button to go back to any slide in this tutorial! Have fun!"
 
+
+# Checks what # currentslide is and updates the header and body label texts to match the current slide
 func _on_back_button_pressed() -> void:
 	if currentSlide > 1:
 		currentSlide -= 1 
@@ -90,6 +95,8 @@ func _on_back_button_pressed() -> void:
 		$bodyLabel.text = "That's it for this tutorial! Press the return to main menu button if you're ready to start, or press the back button to go back to any slide in this tutorial! Have fun!"
 
 
+# A function to hide all of the gradient texture, gets called when every slide is checked
+# this saves a lot of lines of code as we can just call this instead of copy pasting text over and over
 func _hideall():
 	$gradientTexture1.visible = false
 	$gradientTexture2.visible = false

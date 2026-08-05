@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ci8i0wd300xu8"]
+[gd_scene load_steps=12 format=3 uid="uid://ci8i0wd300xu8"]
 
 [ext_resource type="PackedScene" uid="uid://qsc3s4tokwgq" path="res://scenes/synth.tscn" id="1_lhhlj"]
 [ext_resource type="Script" path="res://scripts/back_rect.gd" id="1_mjle0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btxvlrufoctlr" path="res://assets/recButton/4.png" id="7_vrfno"]
 [ext_resource type="Texture2D" uid="uid://ck4b1u4cnf3q6" path="res://assets/recButton/6.png" id="8_ovyj3"]
 [ext_resource type="Texture2D" uid="uid://c5h2stnr1a3pm" path="res://assets/recButton/5.png" id="9_br7p8"]
+[ext_resource type="FontFile" uid="uid://drom70njqlmsv" path="res://fonts/Elms_Sans/static/ElmsSans-SemiBold.ttf" id="9_i4bf1"]
 [ext_resource type="FontFile" uid="uid://c6huylfvo1mqw" path="res://fonts/Elms_Sans/static/ElmsSans-Regular.ttf" id="11_dcp3s"]
 
 [sub_resource type="Gradient" id="Gradient_vdcla"]
@@ -231,6 +232,10 @@ offset_left = 468.0
 offset_top = 511.0
 offset_right = 1452.0
 offset_bottom = 534.0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("9_i4bf1")
+theme_override_font_sizes/font_size = 15
+text = "Tips"
 horizontal_alignment = 1
 
 [node name="tipUpdateTimer" type="Timer" parent="."]

@@ -3,6 +3,8 @@ extends Control
 var stockListIsShown = false
 var tween: Tween
 
+
+# When the stock list button is pressed, checks if the list is extended or it hasn't been toggled, and then starts a cooldown timer, changes the text of the button, and then creates a tween and starts it to change the position of the button and list
 func _on_stock_list_button_pressed() -> void:
 	if stockListIsShown == false:
 		$buttonCooldownTimer.start()
@@ -28,16 +30,22 @@ func _on_stock_list_button_pressed() -> void:
 		stockListIsShown = false
 
 
+
 func _on_button_cooldown_timer_timeout() -> void:
 	$stockListButton.disabled = false
 
+
+# Starts the timer to update the tip label right away
 func _ready() -> void:
 	$tipUpdateTimer.start(10)
 
+
+
+# When the timer ends, generates a random number ranging from 1-12 and then changes the text of the tip label according to which number was generated (also restarts the timer so it loops infinitely)
 func _on_tip_update_label_timeout() -> void:
 	$tipUpdateTimer.start(10)
 	var rng = RandomNumberGenerator.new()
-	rng = randi_range(1, 10)
+	rng = randi_range(1, 12)
 	if rng == 1:
 		$tipLabel.text = "Did you know there are multiple tutorials?"
 	elif rng == 2:
@@ -58,3 +66,7 @@ func _on_tip_update_label_timeout() -> void:
 		$tipLabel.text = "You can use up to 4 different instruments at once!"
 	elif rng == 10:
 		$tipLabel.text = "There's a cool visualizer!"
+	elif rng == 11:
+		$tipLabel.text = "Did you know all instruments have been handmade in FL Studio?"
+	elif rng == 12:
+		$tipLabel.text = "All of the UI has been hand built!"

@@ -1,12 +1,9 @@
 extends Node2D
 
 var slide = 1
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Sets up the first slide
 func _process(delta: float) -> void:
 	if slide == 1:
 		$prevButton.disabled = true
@@ -16,6 +13,7 @@ func _process(delta: float) -> void:
 	else:
 		$prevButton.disabled = false
 
+# Hides all of the textures, much more efficient to call this than copy/paste large lines of code
 func _hide_all():
 	$texture1.visible = false
 	$texture2.visible = false
@@ -23,6 +21,12 @@ func _hide_all():
 	$texture4.visible = false
 	$texture5.visible = false
 	$linkButton.visible = false
+
+
+
+
+
+# Checks if the slide is below the max, and then advances, and then applies the correct text on the labels according to the current slide
 func _on_advance_button_pressed() -> void:
 	if slide < 6:
 		slide += 1
@@ -53,7 +57,7 @@ func _on_advance_button_pressed() -> void:
 		$texture5.visible = true
 		$MainLabel.text = "You're done! Just paste that into the box on the main menu and press start!"
 
-
+# Same as above, advances the slide if needed and then updates text
 func _on_prev_button_pressed() -> void:
 	if slide > 1:
 		slide -= 1
@@ -84,6 +88,6 @@ func _on_prev_button_pressed() -> void:
 		$texture5.visible = true
 		$MainLabel.text = "You're done! Just paste that into the box on the main menu!"
 
-
+# Changes the scene to the main menu
 func _on_return_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")

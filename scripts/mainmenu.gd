@@ -5,7 +5,7 @@ var opacityTween: Tween
 
 
 
-# Called when the node enters the scene tree for the first time.
+# Sets everything up, tweens the progress bar's value and starts a timer to fade everything else out.
 func _ready():
 	$EnterButton.disabled = true
 	$progBar.value = 0
@@ -16,14 +16,15 @@ func _ready():
 	percentTween.tween_property($progBar, "value", 100, 4.0)
 	$loadingLabelTimer.start()
 	randomize()
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+# Checks if text is entered into the api key field, and if there is text, disables the button
 func _process(delta: float):
 	if $apiEnter.text != "":
 		$EnterButton.disabled = false
 	$percentLabel.text = str($progBar.value) + "%"
 
 
-
+# When the enter button is pressed, stores the api key (in global.gd) and prints it in the console for debug
 func _on_button_pressed() -> void:
 	Global.api_key = $apiEnter.text
 	print("DEBUG: API key is " + str(Global.api_key))
@@ -34,6 +35,7 @@ func _on_tutorial_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/tutorialLandingPage.tscn")
 
 
+# After the timer ends, creates tweens and uses those to smoothly animate the various loading menu elements so they fade out smoothly.
 func _on_opacity_timer_timeout() -> void:
 	opacityTween = create_tween()
 	opacityTween.set_parallel(true)
@@ -49,6 +51,8 @@ func _on_opacity_timer_timeout() -> void:
 	opacityTween.tween_property($progBar, "modulate:a", 0, 3.0)
 
 
+
+# Generates a random number, restarts the timer, and updates the loading label's text according to what numbrer was generated
 func _on_loading_label_timer_timeout() -> void:
 	$loadingLabelTimer.start()
 	var rng = RandomNumberGenerator.new()

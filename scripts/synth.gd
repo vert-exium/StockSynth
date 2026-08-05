@@ -474,14 +474,15 @@ func _process(_delta: float) -> void:
 		
 		line.add_point(Vector2(x, y))
 
-
+# Applies the reverb (wet slider) when it's changed
 func _on_reverb_slider_value_changed(value: float) -> void:
 	reverb_effect.wet = value
 
-
+# Applies the distortion effect when it's changed
 func _on_distortion_slider_value_changed(value: float) -> void:
 	distortion_effect.drive = value
 
+# Applies the delay effect 
 func _on_delay_slider_value_changed(value: float) -> void:
 	delay_effect.tap1_level_db = value
 	delay_effect.feedback_level_db = value
